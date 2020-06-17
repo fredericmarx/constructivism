@@ -1,3 +1,26 @@
+@font-face {
+  font-family: InternationalPro;
+  src: url("/fonts/nb_international_pro_regular-webfont.woff2") format("woff2"),
+    url("/fonts/nb_international_pro_regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: InternationalPro;
+  src: url("/fonts/nb_international_pro_bold-webfont.woff2") format("woff2"),
+    url("/fonts/nb_international_pro_bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  font-family: InternationalPro, -apple-system, BlinkMacSystemFont, Bahnschrift,
+    Roboto, sans-serif;
+}
+
 #canvas {
   width: 100%;
 }
