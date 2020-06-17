@@ -3,3 +3,11 @@ layout: base
 ---
 
 # Ode to Constructivism
+
+Art must not be concentrated in dead shrines called museums. It must be spread everywhere – on the streets, in the trams, factories, workshops, and in the workers’ homes.
+
+A multidisciplinary project exploring the intersection of design, art and architec- ture. The project uses the means of a gen- erative web application, a publication and a large scale spatial installation.
+
+The Ode includes a total of 400 generated compositions that are arranged based on the complexity of input parameters. The generater was created by Leonid Joffe and Frederic Marx.
+
+It is encouraged to save the composi- tions produced and print them for your own use using the online generator. Available at odetoconstructivism.com

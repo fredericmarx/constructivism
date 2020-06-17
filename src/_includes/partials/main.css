@@ -19,8 +19,34 @@
 html {
   font-family: InternationalPro, -apple-system, BlinkMacSystemFont, Bahnschrift,
     Roboto, sans-serif;
+  font-size: calc(1em + 0.5vw);
+  line-height: 1.4;
+}
+
+body {
+  margin: 0;
+  margin-bottom: 5em;
 }
 
 #canvas {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  height: calc(100vh - 8em);
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+main {
+  max-width: 30em;
+  margin: 0 auto;
+}
+
+.prose p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.prose p + p {
+  text-indent: 2em;
 }

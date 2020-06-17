@@ -4,7 +4,11 @@
     {% include "partials/head-content.njk" %}
   </head>
   <body>
-    {{ content|safe }}
+    <img id="canvas" height="170" width="240">
+
+    <main class="prose">
+      {{ content|safe }}
+    </main>
     {% include "partials/script.njk" %}
   </body>
 </html>
