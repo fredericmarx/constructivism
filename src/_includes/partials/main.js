@@ -4,8 +4,13 @@ const canvas = document.getElementById("canvas");
 
 canvas.src = renderSvg(defaultRectlist, defaultPreset);
 
-function adjustIndex(preset, index) {
+function adjustIndex(index, preset) {
   const newPreset = Object.assign({}, preset, { index });
+  return newPreset;
+}
+
+function adjustCount(maxCount, preset) {
+  const newPreset = Object.assign({}, preset, { maxCount });
   return newPreset;
 }
 
@@ -19,7 +24,19 @@ function getScrollRatio() {
   return percent;
 }
 
-window.addEventListener("scroll", () => {
-  const preset = adjustIndex(defaultPreset, getScrollRatio() * 20);
+console.log(defaultPreset);
+
+let start;
+
+function tick(timestamp) {
+  if (start === undefined) { start = timestamp };
+  const elapsed = timestamp - start;
+  const sin = Math.sin(elapsed / 2000);
+  const vCount = 5 * sin;
+  const preset = adjustCount(defaultPreset.maxCount + vCount, defaultPreset);
   canvas.src = renderSvg(defaultRectlist, preset);
-});
+
+  window.requestAnimationFrame(tick);
+}
+
+window.requestAnimationFrame(tick);
