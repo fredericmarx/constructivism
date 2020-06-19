@@ -7,7 +7,7 @@ export const defaultPreset = {
   minWidth: 10,
   maxWidth: 80,
   minHeight: 2,
-  maxHeight: 15,
+  maxHeight: 40,
   rotate0Amount: 5,
   rotate45Amount: 2,
   rotate90Amount: 2,

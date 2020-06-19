@@ -24,8 +24,10 @@ html {
 }
 
 body {
-  margin: 0;
+  margin-top: calc(100vh - 8em);
+  margin-right: 5%;
   margin-bottom: 5em;
+  margin-left: 5%;
 }
 
 #canvas {
@@ -35,6 +37,9 @@ body {
   display: block;
   margin: 0 auto;
   object-fit: contain;
+  position: fixed;
+  top: 0;
+  z-index: -1;
 }
 
 main {

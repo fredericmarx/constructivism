@@ -2,18 +2,6 @@ import { defaultRectlist, defaultPreset, renderSvg } from "/js/main.js";
 
 const canvas = document.getElementById("canvas");
 
-canvas.src = renderSvg(defaultRectlist, defaultPreset);
-
-function adjustIndex(index, preset) {
-  const newPreset = Object.assign({}, preset, { index });
-  return newPreset;
-}
-
-function adjustCount(maxCount, preset) {
-  const newPreset = Object.assign({}, preset, { maxCount });
-  return newPreset;
-}
-
 function getScrollRatio() {
   const h = document.documentElement;
   const b = document.body;
@@ -29,12 +17,21 @@ console.log(defaultPreset);
 let start;
 
 function tick(timestamp) {
-  if (start === undefined) { start = timestamp };
+  if (start === undefined) {
+    start = timestamp;
+  }
+
   const elapsed = timestamp - start;
-  const sin = Math.sin(elapsed / 2000);
-  const vCount = 5 * sin;
-  const preset = adjustCount(defaultPreset.maxCount + vCount, defaultPreset);
-  canvas.src = renderSvg(defaultRectlist, preset);
+  const maxCount = 3 + Math.ceil(10 * Math.pow(1 - getScrollRatio(), 2));
+  const index = 15 + Math.ceil(10 * Math.cos(elapsed / 5000));
+
+  const preset = defaultPreset;
+  const newPreset = Object.assign({}, preset, {
+    index,
+    maxCount,
+  });
+
+  canvas.src = renderSvg(defaultRectlist, newPreset);
 
   window.requestAnimationFrame(tick);
 }
