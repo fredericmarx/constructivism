@@ -45,10 +45,10 @@ function tick(timestamp) {
 
   const distance = getElementDistance(canvas, main);
   const mainHeight = main.clientHeight;
-  const ratio = Math.sqrt(mainHeight + distance) || 0;
+  const ratio = Math.sqrt(mainHeight / 2 + distance) || 0;
 
   const elapsed = timestamp - start;
-  const maxCount = clamp(ratio,3,12);
+  const maxCount = clamp(ratio,4,12);
   const rotate45Amount = 4 + Math.ceil(2 * Math.sin(elapsed / 1500));
   const rotate90Amount = 6 + Math.ceil(4 * Math.cos(elapsed / 1500));
   const rotate315Amount = 2 + Math.ceil(2 * Math.sin(elapsed / 1500));
