@@ -52,6 +52,7 @@ function tick(timestamp) {
   const rotate45Amount = 4 + Math.ceil(2 * Math.sin(elapsed / 1500));
   const rotate90Amount = 6 + Math.ceil(4 * Math.cos(elapsed / 1500));
   const rotate315Amount = 2 + Math.ceil(2 * Math.sin(elapsed / 1500));
+  const colorAmount = Math.pow(Math.sin(elapsed / 7000), 2) / 2;
   const index = getScrollRatio() * maxIndex;
 
   const preset = defaultPreset;
@@ -60,7 +61,8 @@ function tick(timestamp) {
     maxCount,
     rotate45Amount,
     rotate90Amount,
-    rotate315Amount
+    rotate315Amount,
+    colorAmount
   });
 
   canvas.src = renderSvg(defaultRectlist, newPreset);
