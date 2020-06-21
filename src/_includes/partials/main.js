@@ -1,6 +1,12 @@
 import { defaultRectlist, defaultPreset, renderSvg } from "/js/main.js";
 
 const canvas = document.getElementById("canvas");
+const main = document.querySelector("main");
+const maxIndex = 50;
+
+console.log(defaultPreset);
+
+let start;
 
 function getScrollRatio() {
   const h = document.documentElement;
@@ -12,18 +18,38 @@ function getScrollRatio() {
   return percent;
 }
 
-console.log(defaultPreset);
+function getElementDistance(el1, el2) {
+  const rect1 = el1.getBoundingClientRect();
+  const rect2 = el2.getBoundingClientRect();
+  const topDistance = (rect2.top - rect1.bottom);
+  const bottomDistance = (rect1.top - rect2.bottom);
+  return Math.max(topDistance, bottomDistance);
+}
 
-let start;
+function clamp(number, lower, upper) {
+  if (number === number) {
+    if (upper !== undefined) {
+      number = number <= upper ? number : upper;
+    }
+    if (lower !== undefined) {
+      number = number >= lower ? number : lower;
+    }
+  }
+  return number;
+}
 
 function tick(timestamp) {
   if (start === undefined) {
     start = timestamp;
   }
 
+  const distance = getElementDistance(canvas, main);
+  const mainHeight = main.clientHeight;
+  const ratio = Math.sqrt(mainHeight + distance) || 0;
+
   const elapsed = timestamp - start;
-  const maxCount = 3 + Math.ceil(10 * Math.pow(1 - getScrollRatio(), 2));
-  const index = 15 + Math.ceil(10 * Math.cos(elapsed / 5000));
+  const maxCount = clamp(ratio,3,12);
+  const index = getScrollRatio() * maxIndex;
 
   const preset = defaultPreset;
   const newPreset = Object.assign({}, preset, {
