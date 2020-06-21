@@ -35,10 +35,11 @@ body {
   max-width: 100%;
   height: calc(100vh - 8em);
   display: block;
-  margin: 0 auto;
   object-fit: contain;
   position: fixed;
   top: 0;
+  left: 50vw;
+  transform: translateX(-50%);
   z-index: -1;
 }
 
