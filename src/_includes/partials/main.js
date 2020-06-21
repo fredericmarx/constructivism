@@ -49,12 +49,18 @@ function tick(timestamp) {
 
   const elapsed = timestamp - start;
   const maxCount = clamp(ratio,3,12);
+  const rotate45Amount = 4 + Math.ceil(2 * Math.sin(elapsed / 1500));
+  const rotate90Amount = 6 + Math.ceil(4 * Math.cos(elapsed / 1500));
+  const rotate315Amount = 2 + Math.ceil(2 * Math.sin(elapsed / 1500));
   const index = getScrollRatio() * maxIndex;
 
   const preset = defaultPreset;
   const newPreset = Object.assign({}, preset, {
     index,
     maxCount,
+    rotate45Amount,
+    rotate90Amount,
+    rotate315Amount
   });
 
   canvas.src = renderSvg(defaultRectlist, newPreset);
