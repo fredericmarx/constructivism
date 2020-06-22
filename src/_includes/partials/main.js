@@ -3,6 +3,7 @@ import { defaultRectlist, defaultPreset, renderSvg } from "/js/main.js";
 const canvas = document.getElementById("canvas");
 const main = document.querySelector("main");
 const maxIndex = 50;
+const ctx = new AudioContext();
 
 console.log(defaultPreset);
 
@@ -21,8 +22,8 @@ function getScrollRatio() {
 function getElementDistance(el1, el2) {
   const rect1 = el1.getBoundingClientRect();
   const rect2 = el2.getBoundingClientRect();
-  const topDistance = (rect2.top - rect1.bottom);
-  const bottomDistance = (rect1.top - rect2.bottom);
+  const topDistance = rect2.top - rect1.bottom;
+  const bottomDistance = rect1.top - rect2.bottom;
   return Math.max(topDistance, bottomDistance);
 }
 
@@ -38,6 +39,23 @@ function clamp(number, lower, upper) {
   return number;
 }
 
+function playNote(freq = 220, dur = 2) {
+  const osc = ctx.createOscillator();
+  const vca = ctx.createGain();
+  const att = ctx.createGain();
+
+  att.gain.setValueAtTime(0.1, ctx.currentTime);
+
+  osc.frequency.value = freq;
+  osc.connect(vca);
+  vca.connect(att);
+  att.connect(ctx.destination);
+
+  osc.start();
+  vca.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + dur);
+  osc.stop(ctx.currentTime + dur);
+}
+
 function tick(timestamp) {
   if (start === undefined) {
     start = timestamp;
@@ -48,7 +66,7 @@ function tick(timestamp) {
   const ratio = Math.sqrt(mainHeight / 2 + distance) || 0;
 
   const elapsed = timestamp - start;
-  const maxCount = clamp(ratio,4,12);
+  const maxCount = clamp(ratio, 4, 12);
   const rotate45Amount = 4 + Math.ceil(2 * Math.sin(elapsed / 1500));
   const rotate90Amount = 6 + Math.ceil(4 * Math.cos(elapsed / 1500));
   const rotate315Amount = 2 + Math.ceil(2 * Math.sin(elapsed / 1500));
@@ -62,10 +80,18 @@ function tick(timestamp) {
     rotate45Amount,
     rotate90Amount,
     rotate315Amount,
-    colorAmount
+    colorAmount,
   });
 
+  const previousSvg = canvas.src;
   canvas.src = renderSvg(defaultRectlist, newPreset);
+
+  if (previousSvg !== canvas.src) {
+    const notes = [220.0, 261.63, 293.66, 329.63, 392.0, 440.0];
+
+    const note = notes[Math.floor(Math.random() * notes.length)];
+    playNote(note);
+  }
 
   window.requestAnimationFrame(tick);
 }
