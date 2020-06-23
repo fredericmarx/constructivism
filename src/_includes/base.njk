@@ -4,11 +4,20 @@
     {% include "partials/head-content.njk" %}
   </head>
   <body>
-    <img id="canvas" height="170" width="240">
+    <div class="container">
+      <header class="menu">
+        <button id="regenerate">Regenerate</button>
+        <button id="unmute">Play sound</button>
+      </header>
 
-    <main class="prose">
-      {{ content|safe }}
-    </main>
+      <div class="stage">
+        <img id="canvas" height="170" width="240">
+      </div>
+
+      <main class="main prose">
+        {{ content|safe }}
+      </main>
+    </div>
     {% include "partials/script.njk" %}
   </body>
 </html>

@@ -1,13 +1,38 @@
-import { defaultRectlist, defaultPreset, renderSvg } from "/js/main.js";
+import { getRandomRectlist, defaultPreset, renderSvg } from "/js/main.js";
 
 const canvas = document.getElementById("canvas");
 const main = document.querySelector("main");
+const regenerateButton = document.getElementById("regenerate");
+const unMuteButton = document.getElementById("unmute");
+
 const maxIndex = 50;
 const ctx = new AudioContext();
+let rectlist = getRandomRectlist();
 
 console.log(defaultPreset);
 
 let start;
+
+regenerateButton.addEventListener("click", () => {
+  rectlist = getRandomRectlist();
+  if (!isMuted()) {
+    playNote(110.0, 8, 0.05);
+  }
+})
+
+unMuteButton.addEventListener("click", () => {
+  if (isMuted()) {
+    unMuteButton.setAttribute("aria-pressed", "true");
+    unMuteButton.textContent = "Stop sound";
+  } else {
+    unMuteButton.setAttribute("aria-pressed", "false");
+    unMuteButton.textContent = "Play sound";
+  }
+})
+
+function isMuted() {
+  return unMuteButton.getAttribute("aria-pressed") !== "true";
+}
 
 function getScrollRatio() {
   const h = document.documentElement;
@@ -39,12 +64,12 @@ function clamp(number, lower, upper) {
   return number;
 }
 
-function playNote(freq = 220, dur = 2) {
+function playNote(freq = 220, dur = 2, gain = 0.1) {
   const osc = ctx.createOscillator();
   const vca = ctx.createGain();
   const att = ctx.createGain();
 
-  att.gain.setValueAtTime(0.1, ctx.currentTime);
+  att.gain.setValueAtTime(gain, ctx.currentTime);
 
   osc.frequency.value = freq;
   osc.connect(vca);
@@ -84,9 +109,9 @@ function tick(timestamp) {
   });
 
   const previousSvg = canvas.src;
-  canvas.src = renderSvg(defaultRectlist, newPreset);
+  canvas.src = renderSvg(rectlist, newPreset);
 
-  if (previousSvg !== canvas.src) {
+  if (!isMuted() && previousSvg !== canvas.src) {
     const notes = [220.0, 261.63, 293.66, 329.63, 392.0, 440.0];
 
     const note = notes[Math.floor(Math.random() * notes.length)];

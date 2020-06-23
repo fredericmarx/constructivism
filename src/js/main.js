@@ -17,8 +17,6 @@ export const defaultPreset = {
   canvasPadding: 20
 };
 
-export const defaultRectlist = getRandomRectlist(50);
-
 function getRect(props) {
   const defaultRect = {
     x: 0,
@@ -118,7 +116,7 @@ function applyPresetToRectlist(rectlist, preset) {
   return rectlistResult;
 }
 
-function getRandomRectlist(amount) {
+export function getRandomRectlist(amount = 50) {
   const randomRectlist = [];
   for (let i = 0; i < amount; i++) {
     randomRectlist[i] = getRandomRect();

@@ -24,28 +24,35 @@ html {
 }
 
 body {
-  margin-top: calc(100vh - 12rem);
-  margin-right: 5%;
-  margin-bottom: 100vh;
-  margin-left: 5%;
+  margin: 5vw;
 }
 
 #canvas {
   width: auto;
-  max-width: 100%;
-  height: calc(100vh - 12rem);
-  display: block;
+  height: 65vh;
   object-fit: contain;
-  position: fixed;
-  top: 0;
-  left: 50vw;
-  transform: translateX(-50%);
-  z-index: -1;
 }
 
-main {
+.stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
   max-width: 30em;
   margin: 0 auto;
+}
+
+.main {
+  padding-top: 60vh;
+  padding-bottom: 100vh;
 }
 
 .prose p {
@@ -55,4 +62,17 @@ main {
 
 .prose p + p {
   text-indent: 2em;
+}
+
+button {
+  border: none;
+  background: red;
+  color: white;
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  font-size: 0.85em;
+}
+
+button:focus {
+  outline: 2px solid black;
 }
