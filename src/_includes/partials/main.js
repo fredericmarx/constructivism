@@ -6,8 +6,24 @@ const regenerateButton = document.getElementById("regenerate");
 const unMuteButton = document.getElementById("unmute");
 
 const maxIndex = 50;
-const ctx = new AudioContext();
 let rectlist = getRandomRectlist();
+
+const ctx = new AudioContext();
+
+const vol = ctx.createGain();
+vol.gain.setValueAtTime(0.3, ctx.currentTime);
+
+const comp = ctx.createDynamicsCompressor();
+comp.threshold.setValueAtTime(-3.0, ctx.currentTime);
+comp.knee.setValueAtTime(0, ctx.currentTime);
+comp.ratio.setValueAtTime(40.0, ctx.currentTime);
+comp.attack.setValueAtTime(0.001, ctx.currentTime);
+comp.release.setValueAtTime(0.1, ctx.currentTime);
+
+comp.connect(vol);
+vol.connect(ctx.destination);
+
+const dest = comp;
 
 console.log(defaultPreset);
 
@@ -74,7 +90,7 @@ function playNote(freq = 220, dur = 2, gain = 0.1) {
   osc.frequency.value = freq;
   osc.connect(vca);
   vca.connect(att);
-  att.connect(ctx.destination);
+  att.connect(dest);
 
   osc.start();
   vca.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + dur);
