@@ -9,6 +9,8 @@ let start;
 class Construction {
   constructor() {
     this.canvas = document.getElementById("canvas");
+    this.controls = document.querySelector(".js-controls");
+    this.controlsToggle = document.querySelector(".js-controls-toggle");
     this.sliders = document.querySelectorAll(".range-slider__input");
     this.defaultPreset = defaultPreset;
     this.parameterValues = {
@@ -22,6 +24,33 @@ class Construction {
 
     this.update();
     this.initSliders();
+
+    this.toggleControls();
+
+    this.controlsToggle.addEventListener("click", () => {
+      this.toggleControls();
+    });
+  }
+
+  toggleControls() {
+    if (this.controlsHidden) {
+      this.controls.removeAttribute("hidden");
+    } else {
+      this.controls.setAttribute("hidden", "");
+    }
+    this.updateControlsToggle();
+  }
+
+  updateControlsToggle() {
+    if (this.controlsHidden) {
+      this.controlsToggle.textContent = "Show more controls";
+    } else {
+      this.controlsToggle.textContent = "Show less controls";
+    }
+  }
+
+  get controlsHidden() {
+    return this.controls.hidden;
   }
 
   get orientation() {
@@ -58,10 +87,10 @@ class Construction {
     }
 
     const keyframes = {
-      0:    [1, 0, 0, 0, 1],
-      45:   [0, 1, 0, 0, 0],
-      315:  [0, 0, 0, 1, 0],
-      90:   [0, 0, 1, 0, 0],
+      0: [1, 0, 0, 0, 1],
+      45: [0, 1, 0, 0, 0],
+      315: [0, 0, 0, 1, 0],
+      90: [0, 0, 1, 0, 0],
     };
 
     const baseRotateAmount = 20;
