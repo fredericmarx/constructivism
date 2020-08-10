@@ -36,7 +36,7 @@ body {
   height: calc(100vh - 12rem);
   display: block;
   object-fit: contain;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 50vw;
   transform: translateX(-50%);
