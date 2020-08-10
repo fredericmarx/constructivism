@@ -77,7 +77,8 @@ class Construction {
 
     getKeyframeValue(this.getParameter("orientation"), keyframes);
 
-    const colorAmount = this.getParameter("brightness");
+    const colorAmount = this.getParameter("brightness") * 0.5;
+    const minColorCount = this.getParameter("brightness") * 2 + 1;
 
     const preset = {
       minWidth,
@@ -87,6 +88,7 @@ class Construction {
       maxCount,
       index,
       colorAmount,
+      minColorCount,
       rotate0Amount,
       rotate45Amount,
       rotate90Amount,
