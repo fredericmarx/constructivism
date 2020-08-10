@@ -24,28 +24,22 @@ html {
 }
 
 body {
-  margin-top: calc(100vh - 12rem);
-  margin-right: 5%;
-  margin-bottom: 100vh;
-  margin-left: 5%;
+  min-height: 200vh;
+  margin: 0;
 }
 
 #canvas {
   width: auto;
-  max-width: 100%;
-  height: calc(100vh - 12rem);
+  width: 100%;
+  height: clamp(10rem, 80vw, 75vh);
   display: block;
   object-fit: contain;
-  position: absolute;
-  top: 0;
-  left: 50vw;
-  transform: translateX(-50%);
-  z-index: -1;
 }
 
 main {
   max-width: 30em;
   margin: 0 auto;
+  padding: 0 1em;
 }
 
 .prose p {
