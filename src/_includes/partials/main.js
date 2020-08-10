@@ -15,6 +15,7 @@ class Construction {
       length: 0.5,
       breadth: 0.5,
       density: 0.5,
+      brightness: 0.5,
       orientation: 0,
       variation: 0,
     };
@@ -77,7 +78,7 @@ class Construction {
 
     getKeyframeValue(this.getParameter("orientation"), keyframes);
 
-    const colorAmount = this.getParameter("brightness") * 0.5;
+    const colorAmount = Math.pow(this.getParameter("brightness"), 3);
     const minColorCount = this.getParameter("brightness") * 2 + 1;
 
     const preset = {
