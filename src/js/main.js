@@ -13,7 +13,7 @@ export const defaultPreset = {
   rotate90Amount: 2,
   rotate315Amount: 2,
   colorAmount: 0.2,
-  minColorCount: 3,
+  minColorCount: 1,
   canvasPadding: 20
 };
 

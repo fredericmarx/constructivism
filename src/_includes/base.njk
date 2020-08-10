@@ -5,8 +5,8 @@
   </head>
   <body>
     <img id="canvas" height="170" width="240">
-
     <main class="prose">
+      {% include "partials/interface.njk" %}
       {{ content|safe }}
     </main>
     {% include "partials/script.njk" %}

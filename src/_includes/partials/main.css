@@ -56,3 +56,14 @@ main {
 .prose p + p {
   text-indent: 2em;
 }
+
+.range-slider {
+  display: block;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+
+.range-slider__input {
+  display: block;
+  width: 100%;
+}
