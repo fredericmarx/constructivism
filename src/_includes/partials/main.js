@@ -13,6 +13,7 @@ class Construction {
     this.controlsToggle = document.querySelector(".js-controls-toggle");
     this.freezeToggle = document.querySelector(".js-freeze-toggle");
     this.sliders = document.querySelectorAll(".range-slider__input");
+    this.hint = document.querySelector(".js-hint");
     this.defaultPreset = defaultPreset;
     this.parameterValues = {
       length: 0.75,

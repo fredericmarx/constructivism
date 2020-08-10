@@ -36,6 +36,23 @@ body {
   object-fit: contain;
 }
 
+.hint {
+  border: 4px solid black;
+  font-size: 0.85em;
+  padding: 0.5em;
+  position: relative;
+}
+
+.hint::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 10px;
+  top: -20px;
+  border: 8px solid transparent;
+  border-bottom-color: black;
+}
+
 main {
   max-width: 30em;
   margin: 0 auto;
@@ -72,12 +89,13 @@ button:hover {
   background-color: red;
 }
 
+button:active,
 button:focus {
   outline: none;
-  border-color: rgba(255,255,255,0.5);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
-input[type=range] {
+input[type="range"] {
   display: block;
   -webkit-appearance: none;
   width: 100%;
@@ -85,19 +103,19 @@ input[type=range] {
   background: transparent;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
+input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: 8px;
   background-color: red;
 }
 
-input[type=range]::-moz-range-track {
+input[type="range"]::-moz-range-track {
   width: 100%;
   height: 8px;
   background-color: red;
 }
 
-input[type=range]::-ms-track {
+input[type="range"]::-ms-track {
   width: 100%;
   height: 8px;
   background-color: red;
@@ -105,29 +123,53 @@ input[type=range]::-ms-track {
   color: transparent;
 }
 
-input[type=range]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 8px;
+  width: 40px;
   height: 40px;
-  background-color: black;
+  background-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    transparent 16px,
+    black 16px,
+    black 24px,
+    transparent 24px
+  );
   margin-top: -16px;
   border: none;
   border-radius: 0;
 }
 
-input[type=range]::-moz-range-thumb {
-  width: 8px;
+input[type="range"]::-moz-range-thumb {
+  width: 40px;
   height: 40px;
-  background-color: black;
+  background-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    transparent 16px,
+    black 16px,
+    black 24px,
+    transparent 24px
+  );
   margin-top: -16px;
   border: none;
   border-radius: 0;
 }
 
-input[type=range]::-ms-thumb {
-  width: 8px;
+input[type="range"]::-ms-thumb {
+  width: 40px;
   height: 40px;
-  background-color: black;
+  background-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    transparent 16px,
+    black 16px,
+    black 24px,
+    transparent 24px
+  );
   margin-top: -16px;
   border: none;
   border-radius: 0;
