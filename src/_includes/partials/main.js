@@ -14,11 +14,11 @@ class Construction {
     this.sliders = document.querySelectorAll(".range-slider__input");
     this.defaultPreset = defaultPreset;
     this.parameterValues = {
-      length: 0.5,
-      breadth: 0.5,
-      density: 0.5,
-      brightness: 0.5,
-      orientation: 0,
+      length: 0.75,
+      breadth: 0.25,
+      density: 0.4,
+      brightness: 0.25,
+      orientation: 0.1,
       variation: 0,
     };
 
