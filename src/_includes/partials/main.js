@@ -11,6 +11,7 @@ class Construction {
     this.canvas = document.getElementById("canvas");
     this.controls = document.querySelector(".js-controls");
     this.controlsToggle = document.querySelector(".js-controls-toggle");
+    this.freezeToggle = document.querySelector(".js-freeze-toggle");
     this.sliders = document.querySelectorAll(".range-slider__input");
     this.defaultPreset = defaultPreset;
     this.parameterValues = {
@@ -21,14 +22,20 @@ class Construction {
       orientation: 0.1,
       variation: 0,
     };
+    this.frozen = false;
 
     this.update();
     this.initSliders();
+    this.initIntersectionObserver();
 
     this.toggleControls();
 
     this.controlsToggle.addEventListener("click", () => {
       this.toggleControls();
+    });
+
+    this.freezeToggle.addEventListener("click", () => {
+      this.toggleFrozen();
     });
   }
 
@@ -41,12 +48,50 @@ class Construction {
     this.updateControlsToggle();
   }
 
+  toggleFrozen() {
+    if (this.frozen) {
+      this.frozen = false;
+    } else {
+      this.frozen = true;
+    }
+  }
+
   updateControlsToggle() {
     if (this.controlsHidden) {
       this.controlsToggle.textContent = "More controls";
     } else {
       this.controlsToggle.textContent = "Less controls";
     }
+  }
+
+  set frozen(value) {
+    this.freezeToggle.setAttribute("aria-pressed", value);
+    this.updateFreezeToggle();
+  }
+
+  get frozen() {
+    return this.freezeToggle.getAttribute("aria-pressed") === "true";
+  }
+
+  updateFreezeToggle() {
+    if (this.frozen) {
+      this.freezeToggle.textContent = "Unfreeze controls";
+    } else {
+      this.freezeToggle.textContent = "Freeze controls";
+    }
+  }
+
+  initIntersectionObserver() {
+    const options = {
+      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    };
+    const observer = new IntersectionObserver((entries) => {
+      if (this.frozen) return;
+      const entry = entries[0];
+      const ratio = entry.intersectionRatio;
+      this.variation = 1 - ratio;
+    }, options);
+    observer.observe(this.canvas);
   }
 
   get controlsHidden() {
@@ -138,6 +183,14 @@ class Construction {
 
       slider.value = value;
 
+      slider.addEventListener("click", () => {
+        this.frozen = true;
+      });
+
+      slider.addEventListener("change", () => {
+        this.frozen = true;
+      });
+
       slider.addEventListener("input", () => {
         this.update();
       });
@@ -156,6 +209,7 @@ class Construction {
 
   setParameter(name, value) {
     document.querySelector(`[name="${name}"]`).value = value;
+    this.update();
   }
 }
 
