@@ -57,6 +57,10 @@ class Construction {
     return this.getParameter("orientation");
   }
 
+  set variation(value) {
+    this.setParameter("variation", value);
+  }
+
   get preset() {
     const minWidth =
       this.defaultPreset.minWidth +
@@ -128,34 +132,30 @@ class Construction {
   }
 
   initSliders() {
-    this.sliders.forEach((slider) =>
+    this.sliders.forEach((slider) => {
+      const name = slider.name;
+      const value = this.parameterValues[name];
+
+      slider.value = value;
+
       slider.addEventListener("input", () => {
-        this.parameterValues[slider.name] = parseFloat(slider.value);
         this.update();
-      })
-    );
+      });
+    });
   }
 
   update() {
-    this.updateSliders();
     const newPreset = Object.assign({}, this.defaultPreset, this.preset);
 
     canvas.src = renderSvg(defaultRectlist, newPreset);
   }
 
-  updateSliders() {
-    this.sliders.forEach((slider) => this.updateSlider(slider));
-  }
-
   getParameter(name) {
-    return this.parameterValues[name];
+    return parseFloat(document.querySelector(`[name="${name}"]`).value);
   }
 
-  updateSlider(slider) {
-    const name = slider.name;
-    const value = this.parameterValues[name];
-
-    slider.value = value;
+  setParameter(name, value) {
+    document.querySelector(`[name="${name}"]`).value = value;
   }
 }
 
