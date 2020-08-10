@@ -43,9 +43,9 @@ class Construction {
 
   updateControlsToggle() {
     if (this.controlsHidden) {
-      this.controlsToggle.textContent = "Show more controls";
+      this.controlsToggle.textContent = "More controls";
     } else {
-      this.controlsToggle.textContent = "Show less controls";
+      this.controlsToggle.textContent = "Less controls";
     }
   }
 
