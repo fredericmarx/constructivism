@@ -4,8 +4,6 @@ const canvas = document.getElementById("canvas");
 const main = document.querySelector("main");
 const maxIndex = 50;
 
-console.log(defaultPreset);
-
 let start;
 
 class Construction {
@@ -17,12 +15,16 @@ class Construction {
       length: 0.5,
       breadth: 0.5,
       density: 0.5,
-      orientation: 0.5,
+      orientation: 0,
       variation: 0,
     };
 
     this.update();
     this.initSliders();
+  }
+
+  get orientation() {
+    return this.getParameter("orientation");
   }
 
   get preset() {
@@ -44,7 +46,36 @@ class Construction {
       this.defaultPreset.maxCount / 3 +
       (this.defaultPreset.maxCount / 3) * 2 * this.getParameter("density");
 
+    function getKeyframeValue(frame, keyframes) {
+      const index = frame * (keyframes.length - 1);
+
+      const lower = keyframes[Math.floor(index)];
+      const upper = keyframes[Math.ceil(index)];
+      const diff = upper - lower;
+      const value = lower + diff * (index - Math.floor(index));
+      return value;
+    }
+
+    const keyframes = {
+      0:    [1, 0, 0, 0, 1],
+      45:   [0, 1, 0, 0, 0],
+      315:  [0, 0, 0, 1, 0],
+      90:   [0, 0, 1, 0, 0],
+    };
+
+    const baseRotateAmount = 20;
+    const rotate0Amount =
+      baseRotateAmount * getKeyframeValue(this.orientation, keyframes[0]);
+    const rotate45Amount =
+      baseRotateAmount * getKeyframeValue(this.orientation, keyframes[45]);
+    const rotate90Amount =
+      baseRotateAmount * getKeyframeValue(this.orientation, keyframes[90]);
+    const rotate315Amount =
+      baseRotateAmount * getKeyframeValue(this.orientation, keyframes[315]);
+
     const index = maxIndex * this.getParameter("variation");
+
+    getKeyframeValue(this.getParameter("orientation"), keyframes);
 
     const colorAmount = this.getParameter("brightness");
 
@@ -56,6 +87,10 @@ class Construction {
       maxCount,
       index,
       colorAmount,
+      rotate0Amount,
+      rotate45Amount,
+      rotate90Amount,
+      rotate315Amount,
     };
     return preset;
   }
@@ -72,7 +107,6 @@ class Construction {
   update() {
     this.updateSliders();
     const newPreset = Object.assign({}, this.defaultPreset, this.preset);
-    console.log(newPreset);
 
     canvas.src = renderSvg(defaultRectlist, newPreset);
   }

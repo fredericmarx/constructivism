@@ -3,7 +3,7 @@ const canvasWidth = 240;
 
 export const defaultPreset = {
   index: 0,
-  maxCount: 10,
+  maxCount: 16,
   minWidth: 4,
   maxWidth: 80,
   minHeight: 4,
