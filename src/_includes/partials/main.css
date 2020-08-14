@@ -26,6 +26,7 @@ html {
 body {
   min-height: 200vh;
   margin: 0;
+  padding-bottom: 5rem;
 }
 
 #canvas {
