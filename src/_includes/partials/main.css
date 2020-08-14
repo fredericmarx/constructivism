@@ -34,6 +34,11 @@ body {
   height: clamp(10rem, 80vw, 75vh);
   display: block;
   object-fit: contain;
+  transition: opacity 0.25s;
+}
+
+#canvas:not([src]) {
+  opacity: 0;
 }
 
 .hint {

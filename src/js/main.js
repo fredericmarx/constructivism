@@ -27,9 +27,9 @@ class Construction {
     this.frozen = false;
     this.rectlist = getRandomRectlist(50);
 
-    this.update();
     this.initSliders();
     this.initIntersectionObserver();
+    this.update();
 
     this.toggleControls();
 
