@@ -67,9 +67,9 @@ class Construction {
 
   updateControlsToggle() {
     if (this.controlsHidden) {
-      this.controlsToggle.textContent = "Edit artwork";
+      this.controlsToggle.innerHTML = "Edit<span class='sm'> artwork</span>";
     } else {
-      this.controlsToggle.textContent = "Finish editing";
+      this.controlsToggle.innerHTML = "Finish<span class='sm'> editing</span>";
     }
   }
 
