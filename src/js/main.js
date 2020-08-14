@@ -1,4 +1,4 @@
-import { defaultRectlist, defaultPreset, renderSvg } from "./lib.js";
+import { getRandomRectlist, defaultPreset, renderSvg } from "./lib.js";
 import { jsPDF } from "jspdf";
 import "svg2pdf.js";
 
@@ -14,6 +14,7 @@ class Construction {
     this.controls = document.querySelector(".js-controls");
     this.controlsToggle = document.querySelector(".js-controls-toggle");
     this.saveButton = document.querySelector(".js-save-button");
+    this.generateButton = document.querySelector(".js-generate-button");
     this.sliders = document.querySelectorAll(".range-slider__input");
     this.hint = document.querySelector(".js-hint");
     this.defaultPreset = defaultPreset;
@@ -26,6 +27,7 @@ class Construction {
       variation: 0,
     };
     this.frozen = false;
+    this.rectlist = getRandomRectlist(50);
 
     this.update();
     this.initSliders();
@@ -39,6 +41,12 @@ class Construction {
 
     this.saveButton.addEventListener("click", () => {
       this.saveSvg();
+    })
+
+    this.generateButton.addEventListener("click", () => {
+      this.rectlist = getRandomRectlist(50);
+      this.update();
+      this.frozen = false;
     })
   }
 
@@ -179,23 +187,24 @@ class Construction {
     const urlPrefix = "data:image/svg+xml;utf8,";
     const newPreset = Object.assign({}, this.defaultPreset, this.preset);
 
-    canvas.src = urlPrefix + renderSvg(defaultRectlist, newPreset);
+    canvas.src = urlPrefix + renderSvg(this.rectlist, newPreset);
   }
 
   saveSvg() {
     const newPreset = Object.assign({}, this.defaultPreset, this.preset);
-    const doc = new jsPDF();
+    const doc = new jsPDF({
+      orientation: "landscape",
+      unit: "mm"
+    });
     const temp = document.createElement("div");
-    temp.innerHTML = renderSvg(defaultRectlist, newPreset);
+    temp.innerHTML = renderSvg(this.rectlist, newPreset);
     const svg = temp.children[0];
 
     this.saveButton.setAttribute("disabled", "");
 
     doc.svg(svg, {
-      x: 10,
-      y: 10,
-      width: 100,
-      height: 100
+      width: 297,
+      height: 210
     }).then(() => {
       doc.save("svg.pdf");
       this.saveButton.removeAttribute("disabled");
@@ -270,8 +279,6 @@ function tick(timestamp) {
     //rotate315Amount,
     //colorAmount,
   });
-
-  canvas.src = renderSvg(defaultRectlist, newPreset);
 
   window.requestAnimationFrame(tick);
 }

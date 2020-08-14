@@ -118,7 +118,7 @@ function applyPresetToRectlist(rectlist, preset) {
   return rectlistResult;
 }
 
-function getRandomRectlist(amount) {
+export function getRandomRectlist(amount) {
   const randomRectlist = [];
   for (let i = 0; i < amount; i++) {
     randomRectlist[i] = getRandomRect();
