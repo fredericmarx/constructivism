@@ -1,6 +1,4 @@
-import { getRandomRectlist, defaultPreset, renderSvg } from "./lib.js";
-import { jsPDF } from "jspdf";
-import "svg2pdf.js";
+import { getRandomRectlist, defaultPreset, renderSvg } from "./lib/lib.js";
 
 const canvas = document.getElementById("canvas");
 const main = document.querySelector("main");
@@ -40,14 +38,14 @@ class Construction {
     });
 
     this.saveButton.addEventListener("click", () => {
-      this.saveSvg();
-    })
+      this.savePdf();
+    });
 
     this.generateButton.addEventListener("click", () => {
       this.rectlist = getRandomRectlist(50);
       this.update();
       this.frozen = false;
-    })
+    });
   }
 
   toggleControls() {
@@ -190,25 +188,21 @@ class Construction {
     canvas.src = urlPrefix + renderSvg(this.rectlist, newPreset);
   }
 
-  saveSvg() {
+  get svg() {
     const newPreset = Object.assign({}, this.defaultPreset, this.preset);
-    const doc = new jsPDF({
-      orientation: "landscape",
-      unit: "mm"
+    return renderSvg(this.rectlist, newPreset);
+  }
+
+  savePdf() {
+    this.saveButton.setAttribute("disabled", true);
+    this.saveButton.classList.add("loading");
+    import("./savePdf").then(module => {
+      const savePdf = module.default;
+      savePdf(this.svg).then(() => {
+        this.saveButton.removeAttribute("disabled");
+        this.saveButton.classList.remove("loading");
+      });
     });
-    const temp = document.createElement("div");
-    temp.innerHTML = renderSvg(this.rectlist, newPreset);
-    const svg = temp.children[0];
-
-    this.saveButton.setAttribute("disabled", "");
-
-    doc.svg(svg, {
-      width: 297,
-      height: 210
-    }).then(() => {
-      doc.save("svg.pdf");
-      this.saveButton.removeAttribute("disabled");
-    })
   }
 
   getParameter(name) {
