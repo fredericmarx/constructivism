@@ -1,189 +1,281 @@
-const canvasHeight = 170;
-const canvasWidth = 240;
+import { defaultRectlist, defaultPreset, renderSvg } from "./lib.js";
 
-export const defaultPreset = {
-  index: 0,
-  maxCount: 16,
-  minWidth: 4,
-  maxWidth: 80,
-  minHeight: 4,
-  maxHeight: 50,
-  rotate0Amount: 5,
-  rotate45Amount: 2,
-  rotate90Amount: 2,
-  rotate315Amount: 2,
-  colorAmount: 0.2,
-  minColorCount: 1,
-  canvasPadding: 20
-};
+const canvas = document.getElementById("canvas");
+const main = document.querySelector("main");
+const maxIndex = 50;
 
-export const defaultRectlist = getRandomRectlist(50);
+let start;
 
-function getRect(props) {
-  const defaultRect = {
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-    coloredness: 0,
-    rotate: 0,
-    hidden: false
-  };
+class Construction {
+  constructor() {
+    this.canvas = document.getElementById("canvas");
+    this.controls = document.querySelector(".js-controls");
+    this.controlsToggle = document.querySelector(".js-controls-toggle");
+    this.freezeToggle = document.querySelector(".js-freeze-toggle");
+    this.sliders = document.querySelectorAll(".range-slider__input");
+    this.hint = document.querySelector(".js-hint");
+    this.defaultPreset = defaultPreset;
+    this.parameterValues = {
+      length: 0.75,
+      breadth: 0.25,
+      density: 0.4,
+      brightness: 0.25,
+      orientation: 0.1,
+      variation: 0,
+    };
+    this.frozen = false;
 
-  return Object.assign(defaultRect, props);
-}
+    this.update();
+    this.initSliders();
+    this.initIntersectionObserver();
 
-function getRandomRect() {
-  const width = Math.random();
-  const height = Math.random();
-  const rotate = Math.random();
-  const x = Math.random();
-  const y = Math.random();
-  const coloredness = Math.random();
+    this.toggleControls();
 
-  const output = getRect({ width, height, x, y, rotate, coloredness });
-  return output;
-}
-
-function applyPresetToRectlist(rectlist, preset) {
-  const {
-    index,
-    maxCount,
-    minWidth,
-    maxWidth,
-    minHeight,
-    maxHeight,
-    rotate0Amount,
-    rotate45Amount,
-    rotate90Amount,
-    rotate315Amount,
-    colorAmount,
-    minColorCount,
-    canvasPadding
-  } = preset;
-  const rectlistSource = [...rectlist, ...rectlist];
-  const rectlistResult = [];
-
-  const rotateValues = [
-    { value: 0, weight: rotate0Amount },
-    { value: 45, weight: rotate45Amount },
-    { value: 90, weight: rotate90Amount },
-    { value: 315, weight: rotate315Amount }
-  ];
-
-  rectlistSource.forEach((rect, i) => {
-    const hidden = i < index || i > index + maxCount - 1;
-
-    const width = applyBounds(rect.width, minWidth, maxWidth);
-    const height = applyBounds(Math.pow(rect.height, 3), minHeight, maxHeight);
-
-    const diagonal = getDiagonal(width, height);
-    const rotate = getCorrespondingWeightedValue(rect.rotate, rotateValues);
-
-    const x = applyBounds(
-      rect.x,
-      0 + canvasPadding + Math.max(diagonal, width, height) / 2 - width / 2,
-      canvasWidth -
-        canvasPadding -
-        Math.max(diagonal, width, height) / 2 -
-        width / 2
-    );
-    const y = applyBounds(
-      rect.y,
-      0 + canvasPadding + Math.max(diagonal, width, height) / 2 - height / 2,
-      canvasHeight -
-        canvasPadding -
-        Math.max(diagonal, width, height) / 2 -
-        height / 2
-    );
-
-    const coloredness = rect.coloredness;
-    const colored =
-      i - index <= minColorCount - 1 || coloredness >= 1 - colorAmount;
-    const fill = colored ? "red" : "black";
-
-    const rectResult = getRect({
-      coloredness,
-      fill,
-      height,
-      hidden,
-      rotate,
-      width,
-      x,
-      y
+    this.controlsToggle.addEventListener("click", () => {
+      this.toggleControls();
     });
-    rectlistResult.push(rectResult);
-  });
 
-  return rectlistResult;
-}
-
-function getRandomRectlist(amount) {
-  const randomRectlist = [];
-  for (let i = 0; i < amount; i++) {
-    randomRectlist[i] = getRandomRect();
+    this.freezeToggle.addEventListener("click", () => {
+      this.toggleFrozen();
+    });
   }
 
-  return randomRectlist;
-}
-
-function applyBounds(input, min, max) {
-  return Math.floor(input * (max - min)) + min;
-}
-
-function getCorrespondingWeightedValue(input, weightedValues) {
-  const weightSum = weightedValues
-    .map(value => value.weight)
-    .reduce((a, b) => a + b);
-
-  const values = [...weightedValues];
-  let threshold = 0;
-  values.forEach(value => {
-    value.threshold = threshold;
-    threshold += (1 / weightSum) * value.weight;
-  });
-  values.reverse();
-
-  const result = values.find(value => input >= value.threshold).value;
-  return result;
-}
-
-function getDiagonal(width, height) {
-  return Math.ceil((Math.sqrt(2) / 2) * width + (Math.sqrt(2) / 2) * height);
-}
-
-export function renderSvg(rectlist, preset) {
-  const urlPrefix = "data:image/svg+xml;utf8,";
-  const svgTemplate = innerHTML => `
-    <svg
-      width="240"
-      height="170"
-      viewbox="0 0 240 170"
-      xmlns="http://www.w3.org/2000/svg"
-    >${innerHTML}</svg>
-	`;
-
-  function renderRect(props) {
-    const { x, y, width, height, fill, rotate, hidden } = props;
-
-    return hidden
-      ? ""
-      : `
-    <rect
-      x="${x}"
-      y="${y}"
-      width="${width}"
-      height="${height}"
-      fill="${fill}"
-      transform="rotate(${rotate} ${x + width / 2} ${y + height / 2})"
-		></rect>`;
+  toggleControls() {
+    if (this.controlsHidden) {
+      this.controls.removeAttribute("hidden");
+    } else {
+      this.controls.setAttribute("hidden", "");
+    }
+    this.updateControlsToggle();
   }
 
-  const svgContent = svgTemplate(
-    applyPresetToRectlist(rectlist, preset)
-      .map(rect => renderRect(rect))
-      .join("")
-  );
+  toggleFrozen() {
+    if (this.frozen) {
+      this.frozen = false;
+    } else {
+      this.frozen = true;
+    }
+  }
 
-  return urlPrefix + svgContent;
+  updateControlsToggle() {
+    if (this.controlsHidden) {
+      this.controlsToggle.textContent = "Show controls";
+    } else {
+      this.controlsToggle.textContent = "Hide controls";
+    }
+  }
+
+  set frozen(value) {
+    this.freezeToggle.setAttribute("aria-pressed", value);
+    this.updateFreezeToggle();
+  }
+
+  get frozen() {
+    return this.freezeToggle.getAttribute("aria-pressed") === "true";
+  }
+
+  updateFreezeToggle() {
+    if (this.frozen) {
+      this.freezeToggle.textContent = "Unfreeze controls";
+    } else {
+      this.freezeToggle.textContent = "Freeze controls";
+    }
+  }
+
+  initIntersectionObserver() {
+    const options = {
+      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    };
+    const observer = new IntersectionObserver((entries) => {
+      if (this.frozen) return;
+      const entry = entries[0];
+      const ratio = entry.intersectionRatio;
+      this.variation = 1 - ratio;
+    }, options);
+    observer.observe(this.canvas);
+  }
+
+  get controlsHidden() {
+    return this.controls.hidden;
+  }
+
+  get orientation() {
+    return this.getParameter("orientation");
+  }
+
+  set variation(value) {
+    this.setParameter("variation", value);
+  }
+
+  get preset() {
+    const minWidth =
+      this.defaultPreset.minWidth +
+      this.defaultPreset.minWidth * this.getParameter("length");
+    const maxWidth =
+      this.defaultPreset.maxWidth / 8 +
+      (this.defaultPreset.maxWidth / 8) * 7 * this.getParameter("length");
+
+    const minHeight =
+      this.defaultPreset.minHeight +
+      this.defaultPreset.minHeight * this.getParameter("breadth");
+    const maxHeight =
+      this.defaultPreset.maxHeight / 8 +
+      (this.defaultPreset.maxHeight / 8) * 7 * this.getParameter("breadth");
+
+    const maxCount =
+      this.defaultPreset.maxCount / 3 +
+      (this.defaultPreset.maxCount / 3) * 2 * this.getParameter("density");
+
+    function getKeyframeValue(frame, keyframes) {
+      const index = frame * (keyframes.length - 1);
+
+      const lower = keyframes[Math.floor(index)];
+      const upper = keyframes[Math.ceil(index)];
+      const diff = upper - lower;
+      const value = lower + diff * (index - Math.floor(index));
+      return value;
+    }
+
+    const keyframes = {
+      0: [1, 0, 0, 0, 1],
+      45: [0, 1, 0, 0, 0],
+      315: [0, 0, 0, 1, 0],
+      90: [0, 0, 1, 0, 0],
+    };
+
+    const baseRotateAmount = 20;
+    const rotate0Amount =
+      baseRotateAmount * getKeyframeValue(this.orientation, keyframes[0]);
+    const rotate45Amount =
+      baseRotateAmount * getKeyframeValue(this.orientation, keyframes[45]);
+    const rotate90Amount =
+      baseRotateAmount * getKeyframeValue(this.orientation, keyframes[90]);
+    const rotate315Amount =
+      baseRotateAmount * getKeyframeValue(this.orientation, keyframes[315]);
+
+    const index = maxIndex * this.getParameter("variation");
+
+    getKeyframeValue(this.getParameter("orientation"), keyframes);
+
+    const colorAmount = Math.pow(this.getParameter("brightness"), 3);
+    const minColorCount = this.getParameter("brightness") * 2 + 1;
+
+    const preset = {
+      minWidth,
+      maxWidth,
+      minHeight,
+      maxHeight,
+      maxCount,
+      index,
+      colorAmount,
+      minColorCount,
+      rotate0Amount,
+      rotate45Amount,
+      rotate90Amount,
+      rotate315Amount,
+    };
+    return preset;
+  }
+
+  initSliders() {
+    this.sliders.forEach((slider) => {
+      const name = slider.name;
+      const value = this.parameterValues[name];
+
+      slider.value = value;
+
+      slider.addEventListener("click", () => {
+        this.frozen = true;
+      });
+
+      slider.addEventListener("change", () => {
+        this.frozen = true;
+      });
+
+      slider.addEventListener("input", () => {
+        this.update();
+      });
+    });
+  }
+
+  update() {
+    const newPreset = Object.assign({}, this.defaultPreset, this.preset);
+
+    canvas.src = renderSvg(defaultRectlist, newPreset);
+  }
+
+  getParameter(name) {
+    return parseFloat(document.querySelector(`[name="${name}"]`).value);
+  }
+
+  setParameter(name, value) {
+    document.querySelector(`[name="${name}"]`).value = value;
+    this.update();
+  }
 }
+
+const construction = new Construction();
+
+function getScrollRatio() {
+  const h = document.documentElement;
+  const b = document.body;
+  const st = "scrollTop";
+  const sh = "scrollHeight";
+
+  const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight);
+  return percent;
+}
+
+function getElementDistance(el1, el2) {
+  const rect1 = el1.getBoundingClientRect();
+  const rect2 = el2.getBoundingClientRect();
+  const topDistance = rect2.top - rect1.bottom;
+  const bottomDistance = rect1.top - rect2.bottom;
+  return Math.max(topDistance, bottomDistance);
+}
+
+function clamp(number, lower, upper) {
+  if (number === number) {
+    if (upper !== undefined) {
+      number = number <= upper ? number : upper;
+    }
+    if (lower !== undefined) {
+      number = number >= lower ? number : lower;
+    }
+  }
+  return number;
+}
+
+function tick(timestamp) {
+  if (start === undefined) {
+    start = timestamp;
+  }
+
+  const distance = getElementDistance(canvas, main);
+  const mainHeight = main.clientHeight;
+  const ratio = Math.sqrt(mainHeight / 2 + distance) || 0;
+
+  const elapsed = timestamp - start;
+  const maxCount = clamp(ratio, 4, 12);
+  const rotate45Amount = 4 + Math.ceil(2 * Math.sin(elapsed / 1500));
+  const rotate90Amount = 6 + Math.ceil(4 * Math.cos(elapsed / 1500));
+  const rotate315Amount = 2 + Math.ceil(2 * Math.sin(elapsed / 1500));
+  const colorAmount = Math.pow(Math.sin(elapsed / 7000), 2) / 2;
+  const index = getScrollRatio() * maxIndex;
+
+  const preset = defaultPreset;
+  const newPreset = Object.assign({}, preset, construction.preset, {
+    //index,
+    //maxCount,
+    //rotate45Amount,
+    //rotate90Amount,
+    //rotate315Amount,
+    //colorAmount,
+  });
+
+  canvas.src = renderSvg(defaultRectlist, newPreset);
+
+  window.requestAnimationFrame(tick);
+}
+
+//window.requestAnimationFrame(tick);

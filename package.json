@@ -6,15 +6,22 @@
   "scripts": {
     "eleventy": "eleventy",
     "clean": "rm -rf -- dist",
-    "build": "npm run clean && npm run eleventy",
-    "watch": "npm run build && npx eleventy --watch",
-    "serve": "npm run build && npx eleventy --serve",
+    "build": "npm run clean && npm run eleventy && parcel build src/js/main.js",
+    "watch": "npm run build && concurrently \"eleventy --watch\" \"parcel src/js/main.js\"",
+    "serve": "npm run build && concurrently \"eleventy --serve\" \"parcel src/js/main.js\"",
     "start": "npm run serve"
   },
   "keywords": [],
   "author": "Frederic Marx <marx.frederic@gmail.com> (https://fmarx.com)",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0"
-  }
+    "@11ty/eleventy": "^0.11.0",
+    "concurrently": "^5.3.0",
+    "parcel-bundler": "^1.12.4"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "not IE_Mob 11"
+  ]
 }
