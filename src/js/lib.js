@@ -153,7 +153,6 @@ function getDiagonal(width, height) {
 }
 
 export function renderSvg(rectlist, preset) {
-  const urlPrefix = "data:image/svg+xml;utf8,";
   const svgTemplate = innerHTML => `
     <svg
       width="240"
@@ -185,5 +184,5 @@ export function renderSvg(rectlist, preset) {
       .join("")
   );
 
-  return urlPrefix + svgContent;
+  return svgContent;
 }

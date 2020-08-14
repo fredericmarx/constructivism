@@ -23,5 +23,9 @@
     "defaults",
     "not IE 11",
     "not IE_Mob 11"
-  ]
+  ],
+  "dependencies": {
+    "jspdf": "^2.0.0",
+    "svg2pdf.js": "^2.0.0"
+  }
 }

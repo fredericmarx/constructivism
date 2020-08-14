@@ -1,4 +1,6 @@
 import { defaultRectlist, defaultPreset, renderSvg } from "./lib.js";
+import { jsPDF } from "jspdf";
+import "svg2pdf.js";
 
 const canvas = document.getElementById("canvas");
 const main = document.querySelector("main");
@@ -11,6 +13,7 @@ class Construction {
     this.canvas = document.getElementById("canvas");
     this.controls = document.querySelector(".js-controls");
     this.controlsToggle = document.querySelector(".js-controls-toggle");
+    this.saveButton = document.querySelector(".js-save-button");
     this.sliders = document.querySelectorAll(".range-slider__input");
     this.hint = document.querySelector(".js-hint");
     this.defaultPreset = defaultPreset;
@@ -33,6 +36,10 @@ class Construction {
     this.controlsToggle.addEventListener("click", () => {
       this.toggleControls();
     });
+
+    this.saveButton.addEventListener("click", () => {
+      this.saveSvg();
+    })
   }
 
   toggleControls() {
@@ -169,9 +176,30 @@ class Construction {
   }
 
   update() {
+    const urlPrefix = "data:image/svg+xml;utf8,";
     const newPreset = Object.assign({}, this.defaultPreset, this.preset);
 
-    canvas.src = renderSvg(defaultRectlist, newPreset);
+    canvas.src = urlPrefix + renderSvg(defaultRectlist, newPreset);
+  }
+
+  saveSvg() {
+    const newPreset = Object.assign({}, this.defaultPreset, this.preset);
+    const doc = new jsPDF();
+    const temp = document.createElement("div");
+    temp.innerHTML = renderSvg(defaultRectlist, newPreset);
+    const svg = temp.children[0];
+
+    this.saveButton.setAttribute("disabled", "");
+
+    doc.svg(svg, {
+      x: 10,
+      y: 10,
+      width: 100,
+      height: 100
+    }).then(() => {
+      doc.save("svg.pdf");
+      this.saveButton.removeAttribute("disabled");
+    })
   }
 
   getParameter(name) {
