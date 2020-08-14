@@ -11,7 +11,6 @@ class Construction {
     this.canvas = document.getElementById("canvas");
     this.controls = document.querySelector(".js-controls");
     this.controlsToggle = document.querySelector(".js-controls-toggle");
-    this.freezeToggle = document.querySelector(".js-freeze-toggle");
     this.sliders = document.querySelectorAll(".range-slider__input");
     this.hint = document.querySelector(".js-hint");
     this.defaultPreset = defaultPreset;
@@ -34,10 +33,6 @@ class Construction {
     this.controlsToggle.addEventListener("click", () => {
       this.toggleControls();
     });
-
-    this.freezeToggle.addEventListener("click", () => {
-      this.toggleFrozen();
-    });
   }
 
   toggleControls() {
@@ -49,36 +44,11 @@ class Construction {
     this.updateControlsToggle();
   }
 
-  toggleFrozen() {
-    if (this.frozen) {
-      this.frozen = false;
-    } else {
-      this.frozen = true;
-    }
-  }
-
   updateControlsToggle() {
     if (this.controlsHidden) {
-      this.controlsToggle.textContent = "Show controls";
+      this.controlsToggle.textContent = "Show more controls";
     } else {
-      this.controlsToggle.textContent = "Hide controls";
-    }
-  }
-
-  set frozen(value) {
-    this.freezeToggle.setAttribute("aria-pressed", value);
-    this.updateFreezeToggle();
-  }
-
-  get frozen() {
-    return this.freezeToggle.getAttribute("aria-pressed") === "true";
-  }
-
-  updateFreezeToggle() {
-    if (this.frozen) {
-      this.freezeToggle.textContent = "Unfreeze controls";
-    } else {
-      this.freezeToggle.textContent = "Freeze controls";
+      this.controlsToggle.textContent = "Show less controls";
     }
   }
 
