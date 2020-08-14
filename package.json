@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "jspdf": "^2.0.0",
+    "minify-xml": "^2.1.0",
     "svg2pdf.js": "^2.0.0"
   }
 }

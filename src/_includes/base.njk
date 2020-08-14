@@ -4,7 +4,7 @@
     {% include "partials/head-content.njk" %}
   </head>
   <body>
-    <img id="canvas" height="170" width="240">
+    <img id="canvas" height="170" width="240" src='data:image/svg+xml;utf8,{{ artwork|safe }}'>
     <main class="prose">
       {% include "partials/interface.njk" %}
       {{ content|safe }}

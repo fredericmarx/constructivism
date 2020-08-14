@@ -1,4 +1,4 @@
-import { getRandomRectlist, defaultPreset, renderSvg } from "./lib/lib.js";
+import { getRandomRectlist, defaultPreset, renderSvg } from "./lib/lib.mjs";
 
 const canvas = document.getElementById("canvas");
 const main = document.querySelector("main");
