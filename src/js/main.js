@@ -1,6 +1,5 @@
 import { getRandomRectlist, defaultPreset, renderSvg } from "./lib/lib.mjs";
 
-const canvas = document.getElementById("canvas");
 const main = document.querySelector("main");
 const maxIndex = 50;
 
@@ -8,7 +7,8 @@ let start;
 
 class Construction {
   constructor() {
-    this.canvas = document.getElementById("canvas");
+    this.canvasElements = document.querySelectorAll(".js-canvas");
+    this.canvas = document.querySelector(".js-canvas");
     this.controls = document.querySelector(".js-controls");
     this.controlsToggle = document.querySelector(".js-controls-toggle");
     this.saveButton = document.querySelector(".js-save-button");
@@ -51,17 +51,25 @@ class Construction {
   toggleControls() {
     if (this.controlsHidden) {
       this.controls.removeAttribute("hidden");
+      this.controls.scrollIntoView({
+        block: "end",
+        behavior: "smooth"
+      });
     } else {
       this.controls.setAttribute("hidden", "");
+      this.canvas.scrollIntoView({
+        block: "start",
+        behavior: "smooth"
+      });
     }
     this.updateControlsToggle();
   }
 
   updateControlsToggle() {
     if (this.controlsHidden) {
-      this.controlsToggle.textContent = "Show more controls";
+      this.controlsToggle.textContent = "Edit artwork";
     } else {
-      this.controlsToggle.textContent = "Show less controls";
+      this.controlsToggle.textContent = "Finish editing";
     }
   }
 
@@ -185,7 +193,9 @@ class Construction {
     const urlPrefix = "data:image/svg+xml;utf8,";
     const newPreset = Object.assign({}, this.defaultPreset, this.preset);
 
-    canvas.src = urlPrefix + renderSvg(this.rectlist, newPreset);
+    this.canvasElements.forEach(canvas => {
+      canvas.src = urlPrefix + renderSvg(this.rectlist, newPreset);
+    })
   }
 
   get svg() {

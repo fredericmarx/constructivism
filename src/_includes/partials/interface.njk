@@ -1,40 +1,14 @@
-<button class="js-controls-toggle">Show more controls</button>
+<button class="js-controls-toggle">Edit artwork</button>
 <button class="js-generate-button">Generate new artwork</button>
 <button class="js-save-button">Download artwork</button>
 
-<label
-  class="range-slider"
->
-  <p class="range-slider__caption">Variation</p>
-  <input
-    name="variation"
-    type="range"
-    class="range-slider__input"
-    min="0"
-    max="1"
-    step="0.05"
-  >
-</label>
-<div class="js-controls">
+<div class="relative">
   <label
     class="range-slider"
   >
-    <p class="range-slider__caption">Orientation</p>
+    <p class="range-slider__caption">Variation</p>
     <input
-      name="orientation"
-      type="range"
-      class="range-slider__input"
-      min="0"
-      max="1"
-      step="0.0025"
-    >
-  </label>
-  <label
-    class="range-slider"
-  >
-    <p class="range-slider__caption">Density</p>
-    <input
-      name="density"
+      name="variation"
       type="range"
       class="range-slider__input"
       min="0"
@@ -42,46 +16,74 @@
       step="0.05"
     >
   </label>
-  <label
-    class="range-slider"
-  >
-    <p class="range-slider__caption">Brightness</p>
-    <input
-      name="brightness"
-      type="range"
-      class="range-slider__input"
-      min="0"
-      max="1"
-      step="0.05"
+  <div class="controls js-controls">
+    <label
+      class="range-slider"
     >
-  </label>
-  <label
-    class="range-slider"
-  >
-    <p class="range-slider__caption">Length</p>
-    <input
-      name="length"
-      type="range"
-      class="range-slider__input"
-      min="0"
-      max="1"
-      step="0.1"
+      <p class="range-slider__caption">Orientation</p>
+      <input
+        name="orientation"
+        type="range"
+        class="range-slider__input"
+        min="0"
+        max="1"
+        step="0.0025"
+      >
+    </label>
+    <label
+      class="range-slider"
     >
-  </label>
-  <label
-    class="range-slider"
-  >
-    <p class="range-slider__caption">Breadth</p>
-    <input
-      name="breadth"
-      type="range"
-      class="range-slider__input"
-      min="0"
-      max="1"
-      step="0.125"
+      <p class="range-slider__caption">Density</p>
+      <input
+        name="density"
+        type="range"
+        class="range-slider__input"
+        min="0"
+        max="1"
+        step="0.05"
+      >
+    </label>
+    <label
+      class="range-slider"
     >
-  </label>
-</div>
-<div class="hint js-hint">
-  <p>Move the slider to change the artwork</p>
+      <p class="range-slider__caption">Brightness</p>
+      <input
+        name="brightness"
+        type="range"
+        class="range-slider__input"
+        min="0"
+        max="1"
+        step="0.05"
+      >
+    </label>
+    <label
+      class="range-slider"
+    >
+      <p class="range-slider__caption">Length</p>
+      <input
+        name="length"
+        type="range"
+        class="range-slider__input"
+        min="0"
+        max="1"
+        step="0.1"
+      >
+    </label>
+    <label
+      class="range-slider"
+    >
+      <p class="range-slider__caption">Breadth</p>
+      <input
+        name="breadth"
+        type="range"
+        class="range-slider__input"
+        min="0"
+        max="1"
+        step="0.125"
+      >
+    </label>
+    <div class="minimap-wrapper">
+      <img class="minimap js-canvas">
+    </div>
+  </div>
 </div>
