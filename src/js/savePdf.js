@@ -14,6 +14,7 @@ export default function savePdf(svgString) {
     width: 297,
     height: 210
   }).then(() => {
-    doc.save("svg.pdf");
+    const date = Date.now();
+    doc.save("construction_" + date + ".pdf");
   })
 }
