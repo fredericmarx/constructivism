@@ -31,8 +31,6 @@ class Construction {
     this.initIntersectionObserver();
     this.update();
 
-    this.toggleControls();
-
     this.controlsToggle.addEventListener("click", () => {
       this.toggleControls();
     });
@@ -50,26 +48,18 @@ class Construction {
 
   toggleControls() {
     if (this.controlsHidden) {
-      this.controls.removeAttribute("hidden");
-      this.controls.scrollIntoView({
-        block: "end",
-        behavior: "smooth"
-      });
+      this.controls.classList.remove("hidden")
     } else {
-      this.controls.setAttribute("hidden", "");
-      this.canvas.scrollIntoView({
-        block: "start",
-        behavior: "smooth"
-      });
+      this.controls.classList.add("hidden")
     }
     this.updateControlsToggle();
   }
 
   updateControlsToggle() {
     if (this.controlsHidden) {
-      this.controlsToggle.innerHTML = "Edit<span class='sm'> artwork</span>";
+      this.controlsToggle.innerHTML = "Expand Editor";
     } else {
-      this.controlsToggle.innerHTML = "Finish<span class='sm'> editing</span>";
+      this.controlsToggle.innerHTML = "Collapse Editor";
     }
   }
 
@@ -87,7 +77,7 @@ class Construction {
   }
 
   get controlsHidden() {
-    return this.controls.hidden;
+    return this.controls.classList.contains("hidden");
   }
 
   get orientation() {

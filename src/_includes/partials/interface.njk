@@ -1,17 +1,5 @@
-  <label
-    class="range-slider"
-  >
-    <p class="range-slider__caption">Iteration</p>
-    <input
-      name="variation"
-      type="range"
-      class="range-slider__input"
-      min="0"
-      max="1"
-      step="0.05"
-    >
-  </label>
-  <div class="controls js-controls">
+<div class="interface">
+  <div class="controls js-controls hidden">
     <label
       class="range-slider"
     >
@@ -78,9 +66,24 @@
       >
     </label>
   </div>
-
-<div class="button-grid">
-  <button class="js-controls-toggle">Edit<span class="sm"> artwork</span></button>
-  <button class="js-generate-button">Regenerate<span class="md"> artwork</span></button>
-  <button class="js-save-button">Download<span class="md"> artwork</button>
+</div>
+<div class="buttons">
+  <label
+    class="range-slider"
+  >
+    <p class="range-slider__caption">Iteration</p>
+    <input
+      name="variation"
+      type="range"
+      class="range-slider__input"
+      min="0"
+      max="1"
+      step="0.05"
+    >
+  </label>
+  <div class="button-grid">
+    <button class="js-controls-toggle">Expand Editor</button>
+    <button class="js-generate-button">Regenerate<span class="md"> artwork</span></button>
+    <button class="js-save-button">Download<span class="md"> artwork</button>
+  </div>
 </div>

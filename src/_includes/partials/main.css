@@ -43,41 +43,44 @@ h1, h2, h3, h4, h5 {
   color: red;
 }
 
-.page {
+.grid {
+  padding: 1rem;
   display: grid;
-  grid-template-columns: [main-start interface-start canvas-start] 1fr [main-end interface-end canvas-end];
-  grid-auto-flow: row dense;
+  grid-template-columns:[canvas-start controls-start buttons-start] 1fr [canvas-end controls-end buttons-end];
+  grid-template-rows: [canvas-start controls-start] auto [canvas-end controls-end buttons-start] auto [buttons-end];
+  grid-auto-flow: column dense;
+  align-items: center;
 }
 
-@media (min-width: 50em) {
-  .page {
-    grid-template-columns: [main-start interface-start] 1fr [interface-end canvas-start] 2fr [canvas-end main-end];
-  }
-
-  .interface {
-    border-right: 2px solid red;
-  }
-}
-
-.header {
-  grid-column-start: main-start;
-  grid-column-end: main-end;
-  border-bottom: 2px solid red;
+.buttons {
+  grid-area: buttons;
 }
 
 .canvas {
-  grid-column-start: canvas-start;
-  grid-column-end: canvas-end;
+  grid-area: canvas;
 }
 
 .interface {
-  grid-column-start: interface-start;
-  grid-column-end: interface-end;
+  grid-area: controls;
+  z-index: 5;
+}
+
+.controls {
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.header {
+  border-bottom: 2px solid red;
 }
 
 .main {
-  grid-column-start: main-start;
-  grid-column-end: main-end;
   border-top: 2px solid red;
 }
 
@@ -90,10 +93,15 @@ h1, h2, h3, h4, h5 {
 }
 
 .button-grid {
-  display: grid;
-  grid-gap: 12px;
-  grid-template-columns: auto auto 1fr;
-  justify-items: end;
+  display: flex;
+}
+
+.button-grid > * {
+  flex: 1;
+}
+
+.button-grid > * + * {
+  margin-left: 2px;
 }
 
 .sm {
@@ -136,10 +144,6 @@ h1, h2, h3, h4, h5 {
   }
 }
 
-.controls {
-  padding-bottom: 2rem;
-}
-
 .relative {
   position: relative;
 }
@@ -175,7 +179,7 @@ button {
   border: 2px solid red;
   color: red;
   font-family: inherit;
-  padding: 0.25em 0.5em;
+  padding: 0.5em;
   font-size: 0.85em;
   cursor: pointer;
 }
@@ -275,4 +279,21 @@ input[type="range"]::-ms-thumb {
   margin-top: -19px;
   border: none;
   border-radius: 0;
+}
+
+@media (min-width: 50em) {
+  .grid {
+    grid-template-columns: [controls-start buttons-start] auto [controls-end buttons-end canvas-start] 1fr [canvas-end];
+    grid-template-rows: [canvas-start controls-start] auto [controls-end buttons-start] auto [buttons-end canvas-end];
+    grid-column-gap: 1rem;
+  }
+
+  .hidden {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .js-controls-toggle {
+    display: none;
+  }
 }
