@@ -1,5 +1,5 @@
-const canvasHeight = 170;
-const canvasWidth = 240;
+const canvasHeight = 240;
+const canvasWidth = 170;
 
 export const defaultPreset = {
   index: 0,
@@ -155,9 +155,9 @@ function getDiagonal(width, height) {
 export function renderSvg(rectlist, preset) {
   const svgTemplate = innerHTML => `
     <svg
-      width="240"
-      height="170"
-      viewbox="0 0 240 170"
+      width="${ canvasWidth }"
+      height="${canvasHeight}"
+      viewbox="0 0 ${ canvasWidth } ${canvasHeight}"
       xmlns="http://www.w3.org/2000/svg"
     >${innerHTML}</svg>
 	`;

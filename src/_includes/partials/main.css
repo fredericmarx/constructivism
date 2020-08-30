@@ -282,7 +282,7 @@ input[type="range"]::-ms-thumb {
 
 @media (min-width: 50em) {
   .grid {
-    grid-template-columns: [controls-start buttons-start] auto [controls-end buttons-end canvas-start] 1fr [canvas-end];
+    grid-template-columns: [controls-start buttons-start] 2fr [controls-end buttons-end canvas-start] 3fr [canvas-end];
     grid-template-rows: [canvas-start controls-start] auto [controls-end buttons-start] auto [buttons-end canvas-end];
     grid-column-gap: 1rem;
   }
