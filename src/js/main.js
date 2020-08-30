@@ -17,11 +17,11 @@ class Construction {
     this.hint = document.querySelector(".js-hint");
     this.defaultPreset = defaultPreset;
     this.parameterValues = {
-      minWidth: 0.5,
-      maxWidth: 0.8,
+      minWidth: 0.6,
+      maxWidth: 1,
       minHeight: 0.2,
-      maxHeight: 0.5,
-      density: 0.25,
+      maxHeight: 0.8,
+      density: 0.1,
       brightness: 0.5,
       orientation: 0.35,
       variation: 0,
@@ -92,12 +92,12 @@ class Construction {
 
   get preset() {
     const minWidth = Math.pow(this.getParameter("minWidth"), 2) * 147 + 3;
-    const maxWidth = Math.pow(this.getParameter("maxWidth"), 2) * 147 + 3;
+    const maxWidth = Math.pow(this.getParameter("maxWidth"), 2) * (1 - this.getParameter("density")) * 147 + 3;
 
     const minHeight = Math.pow(this.getParameter("minHeight"), 2) * 147 + 3;
-    const maxHeight = Math.pow(this.getParameter("maxHeight"), 2) * 147 + 3;
+    const maxHeight = Math.pow(this.getParameter("maxHeight"), 2) * (1 - this.getParameter("density")) * 147 + 3;
 
-    const maxCount = Math.pow(this.getParameter("density"), 2) * 23 + 2;
+    const maxCount = Math.pow(this.getParameter("density"), 2) * 37 + 2;
 
     function getKeyframeValue(frame, keyframes) {
       const index = frame * (keyframes.length - 1);
