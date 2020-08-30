@@ -12,7 +12,8 @@ class Construction {
     this.canvas = document.querySelector(".js-canvas");
     this.controls = document.querySelector(".js-controls");
     this.controlsToggle = document.querySelector(".js-controls-toggle");
-    this.saveButton = document.querySelector(".js-save-button");
+    this.a4Button = document.querySelector(".js-a4-button");
+    this.a2Button = document.querySelector(".js-a2-button");
     this.generateButton = document.querySelector(".js-generate-button");
     this.sliders = document.querySelectorAll(".range-slider__input");
     this.hint = document.querySelector(".js-hint");
@@ -38,8 +39,11 @@ class Construction {
       this.toggleControls();
     });
 
-    this.saveButton.addEventListener("click", () => {
-      this.savePdf();
+    this.a4Button.addEventListener("click", () => {
+      this.savePdf(210, 297, this.a4Button);
+    });
+    this.a2Button.addEventListener("click", () => {
+      this.savePdf(420, 594, this.a2Button);
     });
 
     this.generateButton.addEventListener("click", () => {
@@ -51,9 +55,9 @@ class Construction {
 
   toggleControls() {
     if (this.controlsHidden) {
-      this.controls.classList.remove("hidden")
+      this.controls.classList.remove("hidden");
     } else {
-      this.controls.classList.add("hidden")
+      this.controls.classList.add("hidden");
     }
     this.updateControlsToggle();
   }
@@ -93,10 +97,18 @@ class Construction {
 
   get preset() {
     const minWidth = Math.pow(this.getParameter("minWidth"), 2) * 147 + 3;
-    const maxWidth = Math.pow(this.getParameter("maxWidth"), 2) * (1 - this.getParameter("density")) * 147 + 3;
+    const maxWidth =
+      Math.pow(this.getParameter("maxWidth"), 2) *
+        (1 - this.getParameter("density")) *
+        147 +
+      3;
 
     const minHeight = Math.pow(this.getParameter("minHeight"), 2) * 147 + 3;
-    const maxHeight = Math.pow(this.getParameter("maxHeight"), 2) * (1 - this.getParameter("density")) * 147 + 3;
+    const maxHeight =
+      Math.pow(this.getParameter("maxHeight"), 2) *
+        (1 - this.getParameter("density")) *
+        147 +
+      3;
 
     const maxCount = Math.pow(this.getParameter("density"), 2) * 37 + 2;
 
@@ -176,12 +188,14 @@ class Construction {
     const urlPrefix = "data:image/svg+xml;utf8,";
     const newPreset = Object.assign({}, this.defaultPreset, this.preset);
 
-    const text = Object.values(newPreset).map(num => Math.round(num * 100) / 100).join(", ");
+    const text = Object.values(newPreset)
+      .map((num) => Math.round(num * 100) / 100)
+      .join(", ");
     this.console.textContent = text;
 
-    this.canvasElements.forEach(canvas => {
+    this.canvasElements.forEach((canvas) => {
       canvas.src = urlPrefix + renderSvg(this.rectlist, newPreset);
-    })
+    });
   }
 
   get svg() {
@@ -189,14 +203,14 @@ class Construction {
     return renderSvg(this.rectlist, newPreset);
   }
 
-  savePdf() {
-    this.saveButton.setAttribute("disabled", true);
-    this.saveButton.classList.add("loading");
-    import("./savePdf").then(module => {
+  savePdf(width, height, targetButton) {
+    targetButton.setAttribute("disabled", true);
+    targetButton.classList.add("loading");
+    import("./savePdf").then((module) => {
       const savePdf = module.default;
-      savePdf(this.svg).then(() => {
-        this.saveButton.removeAttribute("disabled");
-        this.saveButton.classList.remove("loading");
+      savePdf(this.svg, width, height).then(() => {
+        targetButton.removeAttribute("disabled");
+        targetButton.classList.remove("loading");
       });
     });
   }
