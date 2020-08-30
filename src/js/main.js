@@ -8,6 +8,7 @@ let start;
 class Construction {
   constructor() {
     this.canvasElements = document.querySelectorAll(".js-canvas");
+    this.console = document.querySelector(".js-console");
     this.canvas = document.querySelector(".js-canvas");
     this.controls = document.querySelector(".js-controls");
     this.controlsToggle = document.querySelector(".js-controls-toggle");
@@ -174,6 +175,9 @@ class Construction {
   update() {
     const urlPrefix = "data:image/svg+xml;utf8,";
     const newPreset = Object.assign({}, this.defaultPreset, this.preset);
+
+    const text = Object.values(newPreset).map(num => Math.round(num * 100) / 100).join(", ");
+    this.console.textContent = text;
 
     this.canvasElements.forEach(canvas => {
       canvas.src = urlPrefix + renderSvg(this.rectlist, newPreset);
