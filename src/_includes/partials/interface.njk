@@ -16,7 +16,7 @@
     <label
       class="range-slider"
     >
-      <p class="range-slider__caption">Density</p>
+      <p class="range-slider__caption">Number of Shapes</p>
       <input
         name="density"
         type="range"
@@ -29,7 +29,7 @@
     <label
       class="range-slider"
     >
-      <p class="range-slider__caption">Brightness</p>
+      <p class="range-slider__caption">Color</p>
       <input
         name="brightness"
         type="range"
@@ -42,9 +42,9 @@
     <label
       class="range-slider"
     >
-      <p class="range-slider__caption">Length</p>
+      <p class="range-slider__caption">Minimum Length</p>
       <input
-        name="length"
+        name="minWidth"
         type="range"
         class="range-slider__input"
         min="0"
@@ -55,14 +55,40 @@
     <label
       class="range-slider"
     >
-      <p class="range-slider__caption">Breadth</p>
+      <p class="range-slider__caption">Maximum Length</p>
       <input
-        name="breadth"
+        name="maxWidth"
         type="range"
         class="range-slider__input"
         min="0"
         max="1"
-        step="0.125"
+        step="0.1"
+      >
+    </label>
+        <label
+      class="range-slider"
+    >
+      <p class="range-slider__caption">Minimum Width</p>
+      <input
+        name="minHeight"
+        type="range"
+        class="range-slider__input"
+        min="0"
+        max="1"
+        step="0.1"
+      >
+    </label>
+    <label
+      class="range-slider"
+    >
+      <p class="range-slider__caption">Maximum Width</p>
+      <input
+        name="maxHeight"
+        type="range"
+        class="range-slider__input"
+        min="0"
+        max="1"
+        step="0.1"
       >
     </label>
   </div>

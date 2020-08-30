@@ -17,11 +17,13 @@ class Construction {
     this.hint = document.querySelector(".js-hint");
     this.defaultPreset = defaultPreset;
     this.parameterValues = {
-      length: 0.75,
-      breadth: 0.25,
-      density: 0.4,
-      brightness: 0.25,
-      orientation: 0.1,
+      minWidth: 0.5,
+      maxWidth: 0.8,
+      minHeight: 0.2,
+      maxHeight: 0.5,
+      density: 0.25,
+      brightness: 0.5,
+      orientation: 0.35,
       variation: 0,
     };
     this.frozen = false;
@@ -89,23 +91,13 @@ class Construction {
   }
 
   get preset() {
-    const minWidth =
-      this.defaultPreset.minWidth +
-      this.defaultPreset.minWidth * this.getParameter("length");
-    const maxWidth =
-      this.defaultPreset.maxWidth / 8 +
-      (this.defaultPreset.maxWidth / 8) * 7 * this.getParameter("length");
+    const minWidth = Math.pow(this.getParameter("minWidth"), 2) * 147 + 3;
+    const maxWidth = Math.pow(this.getParameter("maxWidth"), 2) * 147 + 3;
 
-    const minHeight =
-      this.defaultPreset.minHeight +
-      this.defaultPreset.minHeight * this.getParameter("breadth");
-    const maxHeight =
-      this.defaultPreset.maxHeight / 8 +
-      (this.defaultPreset.maxHeight / 8) * 7 * this.getParameter("breadth");
+    const minHeight = Math.pow(this.getParameter("minHeight"), 2) * 147 + 3;
+    const maxHeight = Math.pow(this.getParameter("maxHeight"), 2) * 147 + 3;
 
-    const maxCount =
-      this.defaultPreset.maxCount / 3 +
-      (this.defaultPreset.maxCount / 3) * 2 * this.getParameter("density");
+    const maxCount = Math.pow(this.getParameter("density"), 2) * 23 + 2;
 
     function getKeyframeValue(frame, keyframes) {
       const index = frame * (keyframes.length - 1);
@@ -138,8 +130,8 @@ class Construction {
 
     getKeyframeValue(this.getParameter("orientation"), keyframes);
 
-    const colorAmount = Math.pow(this.getParameter("brightness"), 3);
-    const minColorCount = this.getParameter("brightness") * 2 + 1;
+    const colorAmount = Math.pow(this.getParameter("brightness"), 2);
+    const minColorCount = 1;
 
     const preset = {
       minWidth,

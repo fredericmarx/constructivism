@@ -14,7 +14,7 @@ export const defaultPreset = {
   rotate315Amount: 2,
   colorAmount: 0.2,
   minColorCount: 1,
-  canvasPadding: 20
+  canvasPadding: 10
 };
 
 export const defaultRectlist = getRandomRectlist(50);
