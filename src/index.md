@@ -26,12 +26,25 @@ I myself come to this history from my perspective as a graphic designer, working
 
 ## Shop
 
-Ode to Construction – Abstraction in the Digital Age
-25€
+<div class="shop-grid">
+  <div>
+  <img src="/images/Web_images_Book_01.jpg">
 
-Constructions 1-4
-A2, A3 Risograph prints
-20-50€
+  Ode to Construction – Abstraction in the Digital&nbsp;Age<br>
+  25€
+
+  <a href="#" class="button">Purchase publication</a>
+  </div>
+  <div>
+  <img src="/images/Web_images_Poster_03.jpg">
+
+  Constructions 1-4<br>
+  A2, A3 Risograph prints<br>
+  20-50€
+
+  <a href="#" class="button">Purchase prints</a>
+  </div>
+</div>
 
 <div class="hr"></div>
 

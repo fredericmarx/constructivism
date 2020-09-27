@@ -27,7 +27,11 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-size: 1em;
   line-height: inherit;
   font-weight: normal;
@@ -126,6 +130,7 @@ h1, h2, h3, h4, h5 {
   padding-bottom: 0.5em;
 }
 
+.button,
 button {
   border: none;
   background-color: red;
@@ -136,7 +141,8 @@ button {
   font-size: 0.85em;
   cursor: pointer;
   display: block;
-  width: 100%;
+  text-decoration: none;
+  text-align: center;
 }
 
 button:hover,
@@ -371,6 +377,26 @@ input[type="range"]::-ms-thumb {
   height: calc(100vh - 5rem);
 }
 
+.shop-grid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.shop-grid > * {
+  margin-top: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-grid *:last-child {
+  margin-top: auto;
+}
+
+img {
+  width: 100%;
+}
+
 .controls-visible .canvas {
   opacity: 0.5;
 }
@@ -379,9 +405,13 @@ input[type="range"]::-ms-thumb {
   color: red;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 @media (min-width: 40em) {
   .page {
-    grid-template-columns: [main-start sidebar-start marginalia-start hr-start canvas-start] 2fr [  marginalia-end  content-start ] 5fr [sidebar-end canvas-end hr-end main-end];
+    grid-template-columns: [main-start sidebar-start marginalia-start hr-start canvas-start] 2fr [ marginalia-end content-start ] 5fr [sidebar-end canvas-end hr-end main-end];
   }
 }
 
