@@ -84,18 +84,28 @@ class Construction {
   }
 
   get preset() {
-    const minWidth = Math.pow(this.getParameter("minWidth"), 2) * 147 + 3;
+    const densityFactor = (1 - this.getParameter("density")) / 4 * 3 + 0.25;
+
+    const minWidth =
+      Math.pow(this.getParameter("minWidth"), 2) *
+        densityFactor *
+        147 +
+      1;
     const maxWidth =
       Math.pow(this.getParameter("maxWidth"), 2) *
-        (1 - this.getParameter("density")) *
-        147 +
+        densityFactor *
+        160 +
       3;
 
-    const minHeight = Math.pow(this.getParameter("minHeight"), 2) * 147 + 3;
+    const minHeight =
+      Math.pow(this.getParameter("minHeight"), 2) *
+        densityFactor *
+        147 +
+      1;
     const maxHeight =
       Math.pow(this.getParameter("maxHeight"), 2) *
-        (1 - this.getParameter("density")) *
-        147 +
+        densityFactor *
+        160 +
       3;
 
     const maxCount = Math.pow(this.getParameter("density"), 2) * 37 + 2;
