@@ -23,7 +23,7 @@
 html {
   font-family: InternationalPro, -apple-system, BlinkMacSystemFont, Bahnschrift,
     Roboto, sans-serif;
-  font-size: calc(0.9em + 0.4vw);
+  font-size: calc(1em + 0.25vw);
   line-height: 1.4;
 }
 
@@ -142,7 +142,7 @@ button {
   color: white;
   font-family: inherit;
   padding: 0.5em;
-  font-size: 0.85em;
+  font-size: 1em;
   cursor: pointer;
   display: block;
   text-decoration: none;
@@ -375,12 +375,12 @@ input[type="range"]::-ms-thumb {
 }
 
 .canvas {
-  height: calc(100vh - 3.5rem);
+  height: calc(100vh - 10rem);
 }
 
 .shop-grid {
   display: grid;
-  grid-gap: var(--space);
+  grid-gap: calc(var(--space) * 1.5);
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
@@ -417,13 +417,16 @@ img {
 }
 
 @media (min-width: 60em) {
-
+  .sidebar {
+    padding-bottom: 5rem;
+  }
 
   .sidebar-separator {
     display: block;
   }
 
   .canvas {
+    height: calc(100vh - 3.5rem);
     position: sticky;
     top: 3.5rem;
   }

@@ -34,7 +34,7 @@ I myself come to this history from my perspective as a graphic designer, working
   <div>
   <img src="/images/Web_images_Book_01.jpg">
 
-  Ode to Construction – Abstraction in the Digital&nbsp;Age<br>
+  Ode to Construction – Abstraction&nbsp;in the Digital&nbsp;Age<br>
   25€
 
   <a href="#" class="button">Purchase publication</a>
