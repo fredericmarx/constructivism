@@ -386,7 +386,12 @@ input[type="range"]::-ms-thumb {
 }
 
 .bottom {
-  padding: calc(var(--space) * 2) 0 calc(var(--space));
+  padding: var(--space) 0 calc(var(--space));
+}
+
+.bottom p {
+  margin: 0;
+  margin-bottom: 0.5em;
 }
 
 .canvas {
@@ -432,6 +437,10 @@ img {
 }
 
 @media (min-width: 60em) {
+  .bottom {
+    padding: calc(var(--space) * 2) 0 calc(var(--space));
+  }
+
   .editor-buttons {
     margin-top: calc(var(--space) * 2);
   }
