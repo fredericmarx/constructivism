@@ -32,7 +32,6 @@ class Construction {
     this.rectlist = getRandomRectlist(50);
 
     this.initSliders();
-    this.initIntersectionObserver();
     this.update();
 
     this.controlsToggle.addEventListener("click", () => {
@@ -70,19 +69,6 @@ class Construction {
     } else {
       this.controlsToggle.innerHTML = "Collapse Editor";
     }
-  }
-
-  initIntersectionObserver() {
-    const options = {
-      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-    };
-    const observer = new IntersectionObserver((entries) => {
-      if (this.frozen) return;
-      const entry = entries[0];
-      const ratio = entry.intersectionRatio;
-      this.variation = 1 - ratio;
-    }, options);
-    observer.observe(this.canvas);
   }
 
   get controlsHidden() {
