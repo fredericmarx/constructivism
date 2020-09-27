@@ -23,7 +23,7 @@
 html {
   font-family: InternationalPro, -apple-system, BlinkMacSystemFont, Bahnschrift,
     Roboto, sans-serif;
-  font-size: calc(1em + 0.25vw);
+  font-size: calc(1em + 0.2vw);
   line-height: 1.4;
   scroll-behavior: smooth;
 }
