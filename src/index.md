@@ -37,7 +37,7 @@ I myself come to this history from my perspective as a graphic designer, working
   Ode to Construction – Abstraction&nbsp;in the Digital&nbsp;Age<br>
   25€
 
-  <a href="#" class="button">Purchase publication</a>
+  <div><a href="#" class="button">Purchase publication</a></div>
   </div>
   <div>
   <img src="/images/Web_images_Poster_03.jpg">
@@ -46,7 +46,7 @@ I myself come to this history from my perspective as a graphic designer, working
   A2, A3 Risograph prints<br>
   20-50€
 
-  <a href="#" class="button">Purchase prints</a>
+  <div><a href="#" class="button">Purchase prints</a></div>
   </div>
 </div>
 
