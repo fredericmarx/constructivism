@@ -43,10 +43,6 @@ h1, h2, h3, h4, h5 {
   color: red;
 }
 
-.canvas {
-  grid-area: canvas;
-}
-
 .controls {
   background-color: rgba(255, 255, 255, 0.5);
   opacity: 1;
@@ -56,14 +52,6 @@ h1, h2, h3, h4, h5 {
 .hidden {
   visibility: hidden;
   opacity: 0;
-}
-
-.header {
-  border-bottom: 2px solid red;
-}
-
-.viewport {
-  border-bottom: 2px solid red;
 }
 
 #canvas {
@@ -271,10 +259,12 @@ input[type="range"]::-ms-thumb {
   border-bottom: 4px solid red;
   display: grid;
   grid-template-columns: [main-start sidebar-start] 3fr [sidebar-end marginalia-start hr-start canvas-start] 2fr [marginalia-end content-start] 5fr [content-end] 2fr [canvas-end hr-end main-end];
+  grid-template-rows: [main-start header-start] auto [header-end separator-start] auto [separator-end content-start] auto [content-end main-end];
 }
 
 .page > .header {
-  grid-column: main;
+  grid-column: canvas;
+  grid-row: header;
 }
 
 .page > * {
@@ -302,7 +292,19 @@ input[type="range"]::-ms-thumb {
   grid-column: sidebar;
   border-right: 2px solid red;
   padding: 1rem;
-  grid-row-end: span 999;
+  grid-row: content / span 999;
+}
+
+.console {
+  grid-column: sidebar;
+  grid-row: header;
+  padding: 0 1rem;
+  font-size: 0.65rem;
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid red;
 }
 
 .canvas {
@@ -320,4 +322,12 @@ input[type="range"]::-ms-thumb {
 
 .pt-1 {
   padding-top: 1rem;
+}
+
+.separator {
+  grid-column: main;
+  height: 2px;
+  background-color: red;
+  grid-row: 2;
+  grid-row: separator;
 }
