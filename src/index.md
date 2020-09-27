@@ -10,7 +10,9 @@ Ode to Construction – Abstraction in the digital age started as an investigati
 
 Website visitors are urged to create their own constructions and save the generated artworks in high definition, ready for production.
 
-<img src="/images/About-Placeholder.jpg">
+<p>
+  <img src="/images/About-Placeholder.jpg">
+</p>
 
 <div class="hr"></div>
 
