@@ -70,7 +70,7 @@ h5 {
 }
 
 .button-grid > * + * {
-  margin-left: 2px;
+  margin-left: var(--space);
 }
 
 .sm {
@@ -130,8 +130,8 @@ h5 {
 
 .range-slider {
   display: block;
-  padding-top: 0.8em;
-  padding-bottom: 0.8em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
 }
 
 .range-slider:first-child {
@@ -151,6 +151,12 @@ button {
   display: block;
   text-decoration: none;
   text-align: center;
+}
+
+.button-outline {
+  background-color: transparent;
+  border-color: red;
+  color: red;
 }
 
 button:hover,
@@ -322,7 +328,7 @@ input[type="range"]::-ms-thumb {
 .sidebar {
   grid-column: sidebar;
   padding-bottom: 0;
-  padding-top: calc(var(--space) * 3);
+  padding-top: var(--space);
   grid-row: canvas;
   height: 100%;
   z-index: 5;
@@ -375,8 +381,12 @@ input[type="range"]::-ms-thumb {
   margin-top: 0;
 }
 
+.editor-buttons {
+  margin-top: var(--space);
+}
+
 .bottom {
-  padding: var(--space) 0;
+  padding: calc(var(--space) * 2) 0 calc(var(--space));
 }
 
 .canvas {
@@ -422,8 +432,12 @@ img {
 }
 
 @media (min-width: 60em) {
+  .editor-buttons {
+    margin-top: calc(var(--space) * 2);
+  }
   .sidebar {
-    padding-bottom: 5rem;
+    padding-top: calc(var(--space) * 3);
+    padding-bottom: calc(var(--space) * 3);
   }
 
   .sidebar-separator {
@@ -446,6 +460,11 @@ img {
 }
 
 @media (min-width: 85em) {
+  .range-slider {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+  }
+
   .mt-0 {
     margin-top: 3rem;
   }
