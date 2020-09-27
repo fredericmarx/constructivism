@@ -37,7 +37,7 @@ I myself come to this history from my perspective as a graphic designer, working
   Ode to Construction – Abstraction&nbsp;in the Digital&nbsp;Age<br>
   25€
 
-  <div><a href="#" class="button">Purchase publication</a></div>
+  <div><a href="https://www.onomatopee.net/exhibition/ode-to-construction/#publication_13912" class="button">Purchase publication</a></div>
   </div>
   <div>
   <img src="/images/Web_images_Poster_03.jpg">
