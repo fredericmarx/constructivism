@@ -251,7 +251,7 @@ input[type="range"]::-ms-thumb {
   border-bottom: 4px solid red;
   display: grid;
   grid-template-columns: [main-start sidebar-start] 3fr [sidebar-end marginalia-start hr-start canvas-start] 2fr [marginalia-end content-start] 5fr [content-end] 2fr [canvas-end hr-end main-end];
-  grid-template-rows: [main-start header-start] auto [header-end separator-start] auto [separator-end canvas-start] auto [canvas-end content-start] auto [content-end main-end];
+  grid-template-rows: [main-start header-start] auto [header-end canvas-start] auto [canvas-end content-start] auto [content-end main-end];
 }
 
 .page > .header {
@@ -282,7 +282,6 @@ input[type="range"]::-ms-thumb {
 
 .sidebar {
   grid-column: sidebar;
-  border-right: 2px solid red;
   padding: 1rem;
   grid-row: canvas;
 }
@@ -296,7 +295,6 @@ input[type="range"]::-ms-thumb {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 2px solid red;
 }
 
 .canvas-wrapper {
@@ -328,8 +326,12 @@ input[type="range"]::-ms-thumb {
 
 .separator {
   grid-column: main;
-  height: 2px;
-  background-color: red;
-  grid-row: 2;
-  grid-row: separator;
+  grid-row: header;
+  border-bottom: 2px solid red;
+}
+
+.sidebar-separator {
+  grid-row: 1 / span 999;
+  grid-column: sidebar;
+  border-right: 2px solid red;
 }
