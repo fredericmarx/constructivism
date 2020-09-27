@@ -54,14 +54,6 @@ h1, h2, h3, h4, h5 {
   opacity: 0;
 }
 
-#canvas {
-  width: auto;
-  width: 100%;
-  height: clamp(10rem, 80vw, 75vh);
-  display: block;
-  object-fit: contain;
-}
-
 .button-grid {
   display: flex;
 }
@@ -259,7 +251,7 @@ input[type="range"]::-ms-thumb {
   border-bottom: 4px solid red;
   display: grid;
   grid-template-columns: [main-start sidebar-start] 3fr [sidebar-end marginalia-start hr-start canvas-start] 2fr [marginalia-end content-start] 5fr [content-end] 2fr [canvas-end hr-end main-end];
-  grid-template-rows: [main-start header-start] auto [header-end separator-start] auto [separator-end content-start] auto [content-end main-end];
+  grid-template-rows: [main-start header-start] auto [header-end separator-start] auto [separator-end canvas-start] auto [canvas-end content-start] auto [content-end main-end];
 }
 
 .page > .header {
@@ -292,14 +284,14 @@ input[type="range"]::-ms-thumb {
   grid-column: sidebar;
   border-right: 2px solid red;
   padding: 1rem;
-  grid-row: content / span 999;
+  grid-row: canvas;
 }
 
 .console {
   grid-column: sidebar;
   grid-row: header;
   padding: 0 1rem;
-  font-size: 0.65rem;
+  font-size: 0.5rem;
   color: red;
   display: flex;
   align-items: center;
@@ -307,8 +299,18 @@ input[type="range"]::-ms-thumb {
   border-right: 2px solid red;
 }
 
-.canvas {
+.canvas-wrapper {
+  position: relative;
   grid-column: canvas;
+}
+
+.canvas {
+  height: 100vh;
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  position: sticky;
+  top: 0;
 }
 
 .hr {

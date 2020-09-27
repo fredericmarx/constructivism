@@ -10,7 +10,9 @@
       <header class="header bb p1">
         <h1 class="masthead">Ode to Construction</h1>
       </header>
-      <img id="canvas" class="js-canvas canvas fadein" height="240" width="170" src='data:image/svg+xml;utf8,{{ artwork|safe }}'>
+      <div class="canvas-wrapper">
+        <img id="canvas" class="js-canvas canvas fadein" height="240" width="170" src='data:image/svg+xml;utf8,{{ artwork|safe }}'>
+      </div>
       {% include "partials/interface.njk" %}
       <div class="hr"></div>
       {{ content|safe }}
