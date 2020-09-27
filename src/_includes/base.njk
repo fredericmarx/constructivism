@@ -8,13 +8,11 @@
       <header class="header bb p1">
         <h1 class="masthead">Ode to Construction</h1>
       </header>
-      <section class="grid">
-        <img id="canvas" class="js-canvas canvas fadein" height="240" width="170" src='data:image/svg+xml;utf8,{{ artwork|safe }}'>
-        {% include "partials/interface.njk" %}
-      </section>
-      <main class="main prose">
-        {{ content|safe }}
-      </main>
+      <img id="canvas" class="js-canvas canvas fadein" height="240" width="170" src='data:image/svg+xml;utf8,{{ artwork|safe }}'>
+      {% include "partials/interface.njk" %}
+      <div class="hr"></div>
+      {{ content|safe }}
+      <div class="pt-1"></div>
     </div>
     {% include "partials/script.njk" %}
   </body>

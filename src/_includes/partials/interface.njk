@@ -1,117 +1,122 @@
-<div class="interface">
-  <div class="controls js-controls hidden">
-    <div class="js-console"></div>
-    <label
-      class="range-slider"
-    >
-      <p class="range-slider__caption">Orientation</p>
-      <input
-        name="orientation"
-        type="range"
-        class="range-slider__input"
-        min="0"
-        max="1"
-        step="0.0025"
+<div class="sidebar">
+  <div class="interface">
+    <div class="controls js-controls hidden">
+      <div class="js-console"></div>
+      <label
+        class="range-slider"
       >
-    </label>
-    <label
-      class="range-slider"
-    >
-      <p class="range-slider__caption">Number of Shapes</p>
-      <input
-        name="density"
-        type="range"
-        class="range-slider__input"
-        min="0"
-        max="1"
-        step="0.05"
+        <p class="range-slider__caption">Orientation</p>
+        <input
+          name="orientation"
+          type="range"
+          class="range-slider__input"
+          min="0"
+          max="1"
+          step="0.0025"
+        >
+      </label>
+      <label
+        class="range-slider"
       >
-    </label>
-    <label
-      class="range-slider"
-    >
-      <p class="range-slider__caption">Color</p>
-      <input
-        name="brightness"
-        type="range"
-        class="range-slider__input"
-        min="0"
-        max="1"
-        step="0.05"
+        <p class="range-slider__caption">Number of Shapes</p>
+        <input
+          name="density"
+          type="range"
+          class="range-slider__input"
+          min="0"
+          max="1"
+          step="0.05"
+        >
+      </label>
+      <label
+        class="range-slider"
       >
-    </label>
-    <label
-      class="range-slider"
-    >
-      <p class="range-slider__caption">Minimum Length</p>
-      <input
-        name="minWidth"
-        type="range"
-        class="range-slider__input"
-        min="0"
-        max="1"
-        step="0.1"
+        <p class="range-slider__caption">Color</p>
+        <input
+          name="brightness"
+          type="range"
+          class="range-slider__input"
+          min="0"
+          max="1"
+          step="0.05"
+        >
+      </label>
+      <label
+        class="range-slider"
       >
-    </label>
-    <label
-      class="range-slider"
-    >
-      <p class="range-slider__caption">Maximum Length</p>
-      <input
-        name="maxWidth"
-        type="range"
-        class="range-slider__input"
-        min="0"
-        max="1"
-        step="0.1"
+        <p class="range-slider__caption">Minimum Length</p>
+        <input
+          name="minWidth"
+          type="range"
+          class="range-slider__input"
+          min="0"
+          max="1"
+          step="0.1"
+        >
+      </label>
+      <label
+        class="range-slider"
       >
-    </label>
-        <label
-      class="range-slider"
-    >
-      <p class="range-slider__caption">Minimum Width</p>
-      <input
-        name="minHeight"
-        type="range"
-        class="range-slider__input"
-        min="0"
-        max="1"
-        step="0.1"
+        <p class="range-slider__caption">Maximum Length</p>
+        <input
+          name="maxWidth"
+          type="range"
+          class="range-slider__input"
+          min="0"
+          max="1"
+          step="0.1"
+        >
+      </label>
+          <label
+        class="range-slider"
       >
-    </label>
-    <label
-      class="range-slider"
-    >
-      <p class="range-slider__caption">Maximum Width</p>
-      <input
-        name="maxHeight"
-        type="range"
-        class="range-slider__input"
-        min="0"
-        max="1"
-        step="0.1"
+        <p class="range-slider__caption">Minimum Width</p>
+        <input
+          name="minHeight"
+          type="range"
+          class="range-slider__input"
+          min="0"
+          max="1"
+          step="0.1"
+        >
+      </label>
+      <label
+        class="range-slider"
       >
-    </label>
+        <p class="range-slider__caption">Maximum Width</p>
+        <input
+          name="maxHeight"
+          type="range"
+          class="range-slider__input"
+          min="0"
+          max="1"
+          step="0.1"
+        >
+      </label>
+    </div>
   </div>
-</div>
-<div class="buttons">
-  <label
-    class="range-slider"
-  >
-    <p class="range-slider__caption">Iteration</p>
-    <input
-      name="variation"
-      type="range"
-      class="range-slider__input"
-      min="0"
-      max="1"
-      step="0.05"
+  <div class="buttons">
+    <label
+      class="range-slider"
     >
-  </label>
-  <div class="button-grid">
-    <button class="js-controls-toggle">Expand Editor</button>
-    <button class="js-generate-button">Regenerate artwork</button>
-    <button class="js-a4-button">Download PDF (A4)</button>
-    <button class="js-a2-button">Download PDF (A2)</button>
+      <p class="range-slider__caption">Iteration</p>
+      <input
+        name="variation"
+        type="range"
+        class="range-slider__input"
+        min="0"
+        max="1"
+        step="0.05"
+      >
+    </label>
+    <div>
+      <button class="js-controls-toggle">Expand Editor</button>
+      <button class="js-generate-button">Regenerate artwork</button>
+      <p>Save Construction as PDF</p>
+      <div class="button-grid">
+        <button class="js-a4-button">Download A4</button>
+        <button class="js-a2-button">Download A2</button>
+      </div>
+    </div>
   </div>
 </div>

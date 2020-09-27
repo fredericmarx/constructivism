@@ -43,26 +43,8 @@ h1, h2, h3, h4, h5 {
   color: red;
 }
 
-.grid {
-  padding: 1rem;
-  display: grid;
-  grid-template-columns:[canvas-start controls-start buttons-start] 1fr [canvas-end controls-end buttons-end];
-  grid-template-rows: [canvas-start controls-start] auto [canvas-end controls-end buttons-start] auto [buttons-end];
-  grid-auto-flow: column dense;
-  align-items: center;
-}
-
-.buttons {
-  grid-area: buttons;
-}
-
 .canvas {
   grid-area: canvas;
-}
-
-.interface {
-  grid-area: controls;
-  z-index: 5;
 }
 
 .controls {
@@ -80,8 +62,8 @@ h1, h2, h3, h4, h5 {
   border-bottom: 2px solid red;
 }
 
-.main {
-  border-top: 2px solid red;
+.viewport {
+  border-bottom: 2px solid red;
 }
 
 #canvas {
@@ -116,19 +98,11 @@ h1, h2, h3, h4, h5 {
   padding: 1rem;
 }
 
-.prose section {
-  padding: 1rem
-}
-
-.prose section h3 {
-  margin-bottom: 0;
-}
-
-.prose section + section {
-  border-top: 2px solid red;
-}
-
 .prose h2 {
+  margin: 0;
+}
+
+.prose h2 + * {
   margin-top: 0;
 }
 
@@ -182,6 +156,8 @@ button {
   padding: 0.5em;
   font-size: 0.85em;
   cursor: pointer;
+  display: block;
+  width: 100%;
 }
 
 button:hover {
@@ -281,12 +257,6 @@ input[type="range"]::-ms-thumb {
 }
 
 @media (min-width: 50em) {
-  .grid {
-    grid-template-columns: [controls-start buttons-start] 2fr [controls-end buttons-end canvas-start] 3fr [canvas-end];
-    grid-template-rows: [canvas-start controls-start] auto [controls-end buttons-start] auto [buttons-end canvas-end];
-    grid-column-gap: 1rem;
-  }
-
   .hidden {
     visibility: visible;
     opacity: 1;
@@ -295,4 +265,59 @@ input[type="range"]::-ms-thumb {
   .js-controls-toggle {
     display: none;
   }
+}
+
+.page {
+  border-bottom: 4px solid red;
+  display: grid;
+  grid-template-columns: [main-start sidebar-start] 3fr [sidebar-end marginalia-start hr-start canvas-start] 2fr [marginalia-end content-start] 5fr [content-end] 2fr [canvas-end hr-end main-end];
+}
+
+.page > .header {
+  grid-column: main;
+}
+
+.page > * {
+  grid-column: content;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.page > h2 {
+  grid-column: marginalia;
+  position: relative;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.page > * + h3 {
+  margin-top: 1em;
+}
+
+.page > h2 + * {
+  margin-top: 0;
+}
+
+.sidebar {
+  grid-column: sidebar;
+  border-right: 2px solid red;
+  padding: 1rem;
+  grid-row-end: span 999;
+}
+
+.canvas {
+  grid-column: canvas;
+}
+
+.hr {
+  grid-column: hr;
+  display: block;
+  height: 2px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background: red;
+}
+
+.pt-1 {
+  padding-top: 1rem;
 }
