@@ -134,7 +134,7 @@ h5 {
   padding-bottom: 0.2em;
 }
 
-.range-slider:first-child {
+.controls .range-slider:first-child {
   padding-top: 0;
 }
 
@@ -153,17 +153,13 @@ button {
   text-align: center;
 }
 
-.button-outline {
-  background-color: transparent;
-  border-color: red;
-  color: red;
-}
-
 button:hover,
 button:active,
 button:focus {
   outline: none;
-  border-color: black;
+  border-color: red;
+  color: red;
+  background-color: white;
 }
 
 .range-slider__caption {
@@ -256,7 +252,7 @@ input[type="range"]::-ms-thumb {
 }
 
 .js-controls-toggle {
-  margin-bottom: 0.5em;
+  margin-bottom: calc(var(--space) * 2);
 }
 
 @media (min-width: 60em) {
@@ -437,10 +433,6 @@ img {
 }
 
 @media (min-width: 60em) {
-  .bottom {
-    padding: calc(var(--space) * 2) 0 calc(var(--space));
-  }
-
   .editor-buttons {
     margin-top: calc(var(--space) * 2);
   }
@@ -451,6 +443,10 @@ img {
 
   .sidebar-separator {
     display: block;
+  }
+
+  .bottom {
+    padding-top: 0;
   }
 
   .canvas {
