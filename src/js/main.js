@@ -14,7 +14,6 @@ class Construction {
     this.controlsToggle = document.querySelector(".js-controls-toggle");
     this.a4Button = document.querySelector(".js-a4-button");
     this.a2Button = document.querySelector(".js-a2-button");
-    this.generateButton = document.querySelector(".js-generate-button");
     this.sliders = document.querySelectorAll(".range-slider__input");
     this.hint = document.querySelector(".js-hint");
     this.defaultPreset = defaultPreset;
@@ -43,12 +42,6 @@ class Construction {
     });
     this.a2Button.addEventListener("click", () => {
       this.savePdf(420, 594, this.a2Button);
-    });
-
-    this.generateButton.addEventListener("click", () => {
-      this.rectlist = getRandomRectlist(50);
-      this.update();
-      this.frozen = false;
     });
   }
 
