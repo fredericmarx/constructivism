@@ -370,7 +370,7 @@ input[type="range"]::-ms-thumb {
 }
 
 .bottom {
-  padding-bottom: 1rem;
+  padding: 1rem 0;
 }
 
 .canvas {
@@ -416,12 +416,6 @@ img {
 }
 
 @media (min-width: 60em) {
-  .bottom {
-    position: sticky;
-    padding-top: 2rem;
-    bottom: 0;
-    background-image: linear-gradient(transparent, white 50%);
-  }
 
   .sidebar-separator {
     display: block;
