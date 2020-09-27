@@ -134,6 +134,10 @@ h5 {
   padding-bottom: 0.8em;
 }
 
+.range-slider:first-child {
+  padding-top: 0;
+}
+
 .button,
 button {
   border: none;
@@ -318,6 +322,7 @@ input[type="range"]::-ms-thumb {
 .sidebar {
   grid-column: sidebar;
   padding-bottom: 0;
+  padding-top: calc(var(--space) * 3);
   grid-row: canvas;
   height: 100%;
   z-index: 5;
