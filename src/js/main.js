@@ -56,8 +56,10 @@ class Construction {
   toggleControls() {
     if (this.controlsHidden) {
       this.controls.classList.remove("hidden");
+      document.body.classList.add("controls-visible");
     } else {
       this.controls.classList.add("hidden");
+      document.body.classList.remove("controls-visible");
     }
     this.updateControlsToggle();
   }
