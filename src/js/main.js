@@ -47,6 +47,8 @@ class Construction {
       this.update();
       this.frozen = false;
     });
+
+    document.body.classList.add("js");
   }
 
   toggleControls() {

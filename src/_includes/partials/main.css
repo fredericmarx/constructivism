@@ -411,6 +411,10 @@ input[type="range"]::-ms-thumb {
   flex-direction: column;
 }
 
+body:not(.js) .js-only {
+  display: none;
+}
+
 .shop-grid *:last-child {
   margin-top: auto;
 }
