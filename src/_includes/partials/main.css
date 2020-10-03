@@ -382,6 +382,10 @@ input[type="range"]::-ms-thumb {
   margin-top: 0;
 }
 
+.mt-1em.mt-1em {
+  margin-top: 1em;
+}
+
 .editor-buttons {
   margin-top: var(--space);
 }
@@ -420,7 +424,7 @@ body:not(.js) .js-only {
 }
 
 img {
-  width: 100%;
+  max-width: 100%;
 }
 
 .controls-visible .canvas {

@@ -67,8 +67,15 @@ NB International Pro<br>Stefan Gandl, Neubau
 
 Ode to Construction is Onomatopee 175
 
-### Supported by
-Arts Promotion Centre Finland<br>Grafia
+### Supported by:
+
+<p class="mt-1em"><a href="https://www.taike.fi/en/frontpage">
+  <img alt="Arts Promotion Centre Finland"  width="200" src="/images/arts-promotion-centre-finland-logo.png">
+</a></p>
+
+<p><a href="https://www.grafia.fi/">
+  <img alt="Grafia"  width="200" src="/images/grafia-logo.svg">
+</a></p>
 
 <div class="hr next-small"></div>
 
