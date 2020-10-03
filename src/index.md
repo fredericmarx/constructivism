@@ -4,11 +4,9 @@ layout: base
 
 ## About
 
-What happens when a construction moves from code to print, or from code to space? What gets lost? What stays the same? Ode to Construction – Abstraction in the digital age demonstrates the fluidity of a design’s materialization within the conditions of the digital. Constructed from pixels and data, transformed into vector files, travelling through the cloud to an offset printer, and translated into physical metal objects – the project moves effortlessly between screen, print, and space and questions the context and medium.
+Ode to Construction – Abstraction in the digital age is an investigation into the visual strategies and ideologies of early 20th century Suprematist and Constructivist art movements from the viewpoint of graphic designer and artist  Polina Joffe. The experiments resulted in the creation of a generative web application, where constructions that echo modernist abstraction can be made with the click of a button. Visitors are urged to play with the generator and create their own constructions, with the ability to save their artworks in high definition.
 
-Ode to Construction – Abstraction in the digital age started as an investigation into the visual strategies and ideologies of Russia’s early 20th century Suprematist and Constructivist movements. Graphic designer Polina Joffe examined these historic movements and searched for ways to reanimate their ideologies and foundational legacies from a contemporary graphic designer’s viewpoint. She designed a generative tool that enables her as well as others to automatically create constructions of red and black rectangles, which stylistically echo modernist abstraction. With the generative tool on this website, Joffe created a set of compositions that fill the pages of the accompanying publication and physical, metallic installation that is on view at Onomatopee Projects (NL)  throughout October.
-
-Website visitors are urged to create their own constructions and save the generated artworks in high definition, ready for production.
+Using the website application Joffe has created a set of constructions that fill the pages of an accompanying publication. These have in turn been reinterpreted as a spatial installation, available to view throughout October 2020 at the publisher’s own art space at Onomatopee Projects.
 
 <p>
   <img src="/images/About-Placeholder.jpg">
