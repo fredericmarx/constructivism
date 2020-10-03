@@ -139,7 +139,7 @@ class Construction {
     const rotate315Amount =
       baseRotateAmount * getKeyframeValue(this.orientation, keyframes[315]);
 
-    const index = maxIndex * this.getParameter("variation");
+    const index = Math.floor(maxIndex * this.getParameter("variation"));
 
     getKeyframeValue(this.getParameter("orientation"), keyframes);
 
