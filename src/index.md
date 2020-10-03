@@ -9,7 +9,7 @@ Ode to Construction – Abstraction in the digital age is an investigation into 
 Using the website application Joffe has created a set of constructions that fill the pages of an accompanying publication. These have in turn been reinterpreted as a spatial installation, available to view throughout October 2020 at the publisher’s own art space at Onomatopee Projects.
 
 <p>
-  <img src="/images/About-Placeholder.jpg">
+  <img alt="The spatial installation Ode to Constructivism" src="/images/About-Placeholder.jpg">
 </p>
 
 <div class="hr"></div>
@@ -30,7 +30,7 @@ I myself come to this history from my perspective as a graphic designer, working
 
 <div class="shop-grid">
   <div>
-  <img src="/images/Web_images_Book_01.jpg">
+  <img alt="The printed book Ode to Construction – Abstraction in the Digital Age" src="/images/Web_images_Book_01.jpg">
 
   Ode to Construction – Abstraction&nbsp;in the Digital&nbsp;Age<br>
   25€
@@ -38,7 +38,7 @@ I myself come to this history from my perspective as a graphic designer, working
   <div><a href="https://www.onomatopee.net/exhibition/ode-to-construction/#publication_13912" class="button">Purchase publication</a></div>
   </div>
   <div>
-  <img src="/images/Web_images_Poster_03.jpg">
+  <img alt="Print of a randomly generated constructivist artwork" src="/images/Web_images_Poster_03.jpg">
 
   Constructions 1-4<br>
   A2, A3 Risograph prints<br>
