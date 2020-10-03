@@ -23,7 +23,7 @@ class Construction {
       maxWidth: 1,
       minHeight: 0.2,
       maxHeight: 0.8,
-      density: 0.1,
+      density: 2,
       brightness: 0.5,
       orientation: 0.35,
       variation: 0,
@@ -84,7 +84,7 @@ class Construction {
   }
 
   get preset() {
-    const densityFactor = (1 - this.getParameter("density")) / 4 * 3 + 0.25;
+    const densityFactor = ((1 - this.getParameter("density") / 16) * 0.5) + 0.5;
 
     const minWidth =
       Math.pow(this.getParameter("minWidth"), 2) *
@@ -108,7 +108,9 @@ class Construction {
         160 +
       3;
 
-    const maxCount = Math.pow(this.getParameter("density"), 4) * 48 + 2;
+    const maxCount = this.getParameter("density");
+    console.log(this.getParameter("density"))
+    console.log(maxCount)
 
     function getKeyframeValue(frame, keyframes) {
       const index = frame * (keyframes.length - 1);
