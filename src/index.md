@@ -8,10 +8,6 @@ Ode to Construction – Abstraction in the digital age is an investigation into 
 
 Using the website application Joffe has created a set of constructions that fill the pages of an accompanying publication. These have in turn been reinterpreted as a spatial installation, available to view throughout October 2020 at the publisher’s own art space at Onomatopee Projects.
 
-<p>
-  <img alt="The spatial installation Ode to Constructivism" src="/images/About-Placeholder.jpg">
-</p>
-
 <div class="hr"></div>
 
 ## Artist’s Letter
