@@ -451,10 +451,6 @@ img {
     display: block;
   }
 
-  .bottom {
-    padding-top: 0;
-  }
-
   .canvas {
     height: calc(100vh - 3.5rem);
     position: sticky;
