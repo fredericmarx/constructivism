@@ -108,8 +108,6 @@ class Construction {
       3;
 
     const maxCount = this.getParameter("density");
-    console.log(this.getParameter("density"))
-    console.log(maxCount)
 
     function getKeyframeValue(frame, keyframes) {
       const index = frame * (keyframes.length - 1);
