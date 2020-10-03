@@ -23,7 +23,7 @@
 html {
   font-family: InternationalPro, -apple-system, BlinkMacSystemFont, Bahnschrift,
     Roboto, sans-serif;
-  font-size: calc(1em + 0.2vw);
+  font-size: calc(1.1em + 0.2vw);
   line-height: 1.4;
   scroll-behavior: smooth;
 }
@@ -136,8 +136,7 @@ h5 {
 
 .range-slider {
   display: block;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
+  margin-bottom: -0.2rem;
 }
 
 .controls .range-slider:first-child {
@@ -258,7 +257,7 @@ input[type="range"]::-ms-thumb {
 }
 
 .js-controls-toggle {
-  margin-bottom: calc(var(--space) * 2);
+  margin-bottom: var(--space);
 }
 
 @media (min-width: 60em) {
@@ -388,7 +387,7 @@ input[type="range"]::-ms-thumb {
 }
 
 .bottom {
-  padding: var(--space) 0 calc(var(--space));
+  padding-bottom: var(--space);
 }
 
 .bottom p {
@@ -432,7 +431,19 @@ img {
   width: 100%;
 }
 
+@media (min-width: 30em) {
+  .range-slider {
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin-bottom: 0;
+  }
+}
+
 @media (min-width: 40em) {
+  .bottom {
+    padding-top: var(--space);
+  }
+
   .page {
     grid-template-columns: [main-start sidebar-start marginalia-start hr-start canvas-start] 2fr [ marginalia-end content-start ] 5fr [sidebar-end canvas-end hr-end main-end];
   }
@@ -442,6 +453,7 @@ img {
   .editor-buttons {
     margin-top: calc(var(--space) * 2);
   }
+
   .sidebar {
     padding-top: calc(var(--space) * 3);
     padding-bottom: calc(var(--space) * 3);
