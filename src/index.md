@@ -34,7 +34,12 @@ I myself come to this history from my perspective as a graphic designer, working
   <div><a href="https://www.onomatopee.net/exhibition/ode-to-construction/#publication_13912" class="button">Purchase publication</a></div>
   </div>
   <div>
-  <img alt="Print of a randomly generated constructivist artwork" src="/images/Web_images_Poster_03.jpg">
+  <div class="gallery">
+    <img alt="Print of a randomly generated constructivist artwork" src="/images/Web_images_Poster_03.jpg">
+    <img alt="Print of a randomly generated constructivist artwork" src="/images/Web_images_Poster_01.jpg">
+    <img alt="Print of a randomly generated constructivist artwork" src="/images/Web_images_Poster_02.jpg">
+    <img alt="Print of a randomly generated constructivist artwork" src="/images/Web_images_Poster_04.jpg">
+  </div>
 
   Constructions 1-4<br>
   A2, A3 Risograph prints<br>

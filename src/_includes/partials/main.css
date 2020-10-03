@@ -435,6 +435,49 @@ img {
   width: 100%;
 }
 
+@keyframes gallery {
+  25% {
+    z-index: 1;
+  }
+
+  50% {
+    z-index: 0;
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.gallery > * {
+  grid-row: 1;
+  grid-column: 1;
+  animation: gallery 4s infinite linear;
+}
+
+.gallery > *:nth-child(1) {
+  z-index: 1;
+  animation: none;
+}
+
+.gallery > *:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.gallery > *:nth-child(3) {
+  animation-delay: 2s;
+}
+
+.gallery > *:nth-child(4) {
+  animation-delay: 3s;
+}
+
+.gallery:hover > * {
+  animation-play-state: paused;
+}
+
 @media (min-width: 30em) {
   .range-slider {
     padding-top: 0.2em;
