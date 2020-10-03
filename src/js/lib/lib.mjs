@@ -2,19 +2,19 @@ const canvasHeight = 240;
 const canvasWidth = 170;
 
 export const defaultPreset = {
+  canvasPadding: 0,
+  colorAmount: 0.25,
   index: 0,
-  maxCount: 16,
-  minWidth: 4,
-  maxWidth: 80,
-  minHeight: 4,
-  maxHeight: 50,
-  rotate0Amount: 5,
-  rotate45Amount: 2,
-  rotate90Amount: 2,
-  rotate315Amount: 2,
-  colorAmount: 0.2,
+  maxCount: 2,
+  maxHeight: 99.00000000000001,
+  maxWidth: 153,
   minColorCount: 1,
-  canvasPadding: 0
+  minHeight: 6.512500000000001,
+  minWidth: 50.6125,
+  rotate0Amount: 0,
+  rotate45Amount: 12.000000000000002,
+  rotate90Amount: 7.999999999999998,
+  rotate315Amount: 0,
 };
 
 export const defaultRectlist = getRandomRectlist(50);
@@ -27,7 +27,7 @@ function getRect(props) {
     height: 0,
     coloredness: 0,
     rotate: 0,
-    hidden: false
+    hidden: false,
   };
 
   return Object.assign(defaultRect, props);
@@ -59,7 +59,7 @@ function applyPresetToRectlist(rectlist, preset) {
     rotate315Amount,
     colorAmount,
     minColorCount,
-    canvasPadding
+    canvasPadding,
   } = preset;
   const rectlistSource = [...rectlist, ...rectlist];
   const rectlistResult = [];
@@ -68,7 +68,7 @@ function applyPresetToRectlist(rectlist, preset) {
     { value: 0, weight: rotate0Amount },
     { value: 45, weight: rotate45Amount },
     { value: 90, weight: rotate90Amount },
-    { value: 315, weight: rotate315Amount }
+    { value: 315, weight: rotate315Amount },
   ];
 
   rectlistSource.forEach((rect, i) => {
@@ -110,7 +110,7 @@ function applyPresetToRectlist(rectlist, preset) {
       rotate,
       width,
       x,
-      y
+      y,
     });
     rectlistResult.push(rectResult);
   });
@@ -133,18 +133,18 @@ function applyBounds(input, min, max) {
 
 function getCorrespondingWeightedValue(input, weightedValues) {
   const weightSum = weightedValues
-    .map(value => value.weight)
+    .map((value) => value.weight)
     .reduce((a, b) => a + b);
 
   const values = [...weightedValues];
   let threshold = 0;
-  values.forEach(value => {
+  values.forEach((value) => {
     value.threshold = threshold;
     threshold += (1 / weightSum) * value.weight;
   });
   values.reverse();
 
-  const result = values.find(value => input >= value.threshold).value;
+  const result = values.find((value) => input >= value.threshold).value;
   return result;
 }
 
@@ -153,11 +153,11 @@ function getDiagonal(width, height) {
 }
 
 export function renderSvg(rectlist, preset) {
-  const svgTemplate = innerHTML => `
+  const svgTemplate = (innerHTML) => `
     <svg
-      width="${ canvasWidth }"
+      width="${canvasWidth}"
       height="${canvasHeight}"
-      viewbox="0 0 ${ canvasWidth } ${canvasHeight}"
+      viewbox="0 0 ${canvasWidth} ${canvasHeight}"
       xmlns="http://www.w3.org/2000/svg"
     >${innerHTML}</svg>
 	`;
@@ -180,7 +180,7 @@ export function renderSvg(rectlist, preset) {
 
   const svgContent = svgTemplate(
     applyPresetToRectlist(rectlist, preset)
-      .map(rect => renderRect(rect))
+      .map((rect) => renderRect(rect))
       .join("")
   );
 
