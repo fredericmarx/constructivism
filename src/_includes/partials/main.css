@@ -79,6 +79,35 @@ h5 {
   margin-left: var(--space);
 }
 
+.button {
+  border: none;
+  background-color: red;
+  border: 2px solid transparent;
+  color: white;
+  font-family: inherit;
+  padding: 0.5em;
+  font-size: 1em;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.button:hover,
+.button:active,
+.button:focus {
+  outline: none;
+  border-color: red;
+  color: red;
+  background-color: white;
+}
+
+.button.inert {
+  background-color: grey;
+  color: white !important;
+  cursor: default;
+}
+
 .sm {
   display: none;
 }
@@ -151,34 +180,6 @@ a:focus {
 
 .controls .range-slider:first-child {
   padding-top: 0;
-}
-
-.button,
-button {
-  border: none;
-  background-color: red;
-  border: 2px solid transparent;
-  color: white;
-  font-family: inherit;
-  padding: 0.5em;
-  font-size: 1em;
-  cursor: pointer;
-  display: block;
-  text-decoration: none;
-  text-align: center;
-}
-
-button:hover,
-button:active,
-button:focus {
-  outline: none;
-  border-color: red;
-  color: red;
-  background-color: white;
-}
-
-.button.inert {
-  background-color: grey;
 }
 
 .range-slider__caption {
