@@ -134,6 +134,16 @@ h5 {
   margin-bottom: 0;
 }
 
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: red;
+}
+
 .range-slider {
   display: block;
   margin-bottom: -0.2rem;

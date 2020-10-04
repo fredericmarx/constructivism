@@ -6,7 +6,7 @@ layout: base
 
 Ode to Construction – Abstraction in the digital age is an investigation into the visual strategies and ideologies of early 20th century Suprematist and Constructivist art movements from the viewpoint of graphic designer and artist Polina Joffe. The experiments resulted in the creation of a generative web application, where constructions that echo modernist abstraction can be made with the click of a button. Visitors are urged to play with the generator and create their own constructions, with the ability to save their artworks in high definition.
 
-Using the website application Joffe has created a set of constructions that fill the pages of an accompanying publication. These have in turn been reinterpreted as a spatial installation, available to view throughout October 2020 at the publisher’s own art space at Onomatopee Projects.
+Using the website application Joffe has created a set of constructions that fill the pages of an [accompanying publication](https://www.onomatopee.net/exhibition/ode-to-construction/#publication_13912). These have in turn been reinterpreted as a spatial installation, available to view throughout October 2020 at the publisher’s own art space at [Onomatopee Projects](https://www.onomatopee.net/exhibition/ode-to-construction/).
 
 <div class="hr"></div>
 
@@ -95,7 +95,7 @@ The Netherlands
 
 ### Contact
 
-e. info@onomatopee.net<br>
+e. [info@onomatopee.net](mailto:info@onomatopee.net)<br>
 t. 0031(0)40 298 98 92
 
 ### Legal Disclaimer
