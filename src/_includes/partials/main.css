@@ -103,9 +103,10 @@ h5 {
 }
 
 .button.inert {
-  background-color: grey;
+  background-color: grey !important;
   color: white !important;
   cursor: default;
+  border-color: transparent !important;
 }
 
 .sm {
