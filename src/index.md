@@ -43,7 +43,7 @@ I myself come to this history from my perspective as a graphic designer, working
 
   Constructions 1-4<br>
   A2, A3 Risograph prints<br>
-  15-50€
+  15-25€
 
   <div><a class="button inert">Coming soon</a></div>
   </div>
