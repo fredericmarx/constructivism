@@ -10,18 +10,6 @@ Using the website application Joffe has created a set of constructions that fill
 
 <div class="hr"></div>
 
-## Artist’s Letter
-
-Ode to Construction began as an investigation into the visual strategies and ideologies of Russia’s Suprematist and Constructivist movements. I call it an “ode” for several reasons, but primarily because I’m referencing the love affair design has had with the aesthetics of modernism for decades, including my own love affair. My ode—somewhat melancholically, and also as an homage—examines these historic movements from a contemporary graphic designer’s viewpoint; it’s an ode to the idealism of the Russian avant-garde, to a utopian notion of transforming art into a medium that serves everyone, to the collapsing of distinctions between art and design. For my ode, I’ve designed a generative tool to automatically create constructions of red and black rectangles, which stylistically echo modernist abstraction. With this program, available at odetoconstruction.com, users can create their own free “artworks” with the click of a button. This book features generated outcomes of this digital tool.
-
-Constructed from pixels and data, transformed into vector files, forming electric light beams on the screen before travelling through the cloud to an offset printer to become two inks on paper, the constructions in this book began life in one medium and ended in another. Similarly, the project’s accompanying exhibition (taking place at Onomatopee Projects in Fall 2020) features forms generated from code, but materialized as a temporary installation. My primary interest is in inviting the audience to question medium and context: What happens when a construction moves from code to print, or from code to space? What gets lost? What stays the same?
-
-I myself come to this history from my perspective as a graphic designer, working with print, typography, space, and shapes every day. Having left Russia for Finland as a two-year old before the fall of the Soviet Union, the forms of Russian abstraction have followed me throughout my life like a shadow. Ode to Construction’s color palette is red, white, and black, and therefore it references the aesthetics of the movements with which I’m engaged. But the colors also reference the lexicon of typography, and the typographic standard of black on white with red is an accent colour. For designers like myself, this palette is often the starting point. So it became the starting point for me here too.
-
-— Polina Joffe, July 2020
-
-<div class="hr"></div>
-
 ## Shop
 
 <div class="shop-grid">
@@ -48,6 +36,18 @@ I myself come to this history from my perspective as a graphic designer, working
   <div><a class="button inert">Coming soon</a></div>
   </div>
 </div>
+
+<div class="hr"></div>
+
+## Artist’s Letter
+
+Ode to Construction began as an investigation into the visual strategies and ideologies of Russia’s Suprematist and Constructivist movements. I call it an “ode” for several reasons, but primarily because I’m referencing the love affair design has had with the aesthetics of modernism for decades, including my own love affair. My ode—somewhat melancholically, and also as an homage—examines these historic movements from a contemporary graphic designer’s viewpoint; it’s an ode to the idealism of the Russian avant-garde, to a utopian notion of transforming art into a medium that serves everyone, to the collapsing of distinctions between art and design. For my ode, I’ve designed a generative tool to automatically create constructions of red and black rectangles, which stylistically echo modernist abstraction. With this program, available at odetoconstruction.com, users can create their own free “artworks” with the click of a button. This book features generated outcomes of this digital tool.
+
+Constructed from pixels and data, transformed into vector files, forming electric light beams on the screen before travelling through the cloud to an offset printer to become two inks on paper, the constructions in this book began life in one medium and ended in another. Similarly, the project’s accompanying exhibition (taking place at Onomatopee Projects in Fall 2020) features forms generated from code, but materialized as a temporary installation. My primary interest is in inviting the audience to question medium and context: What happens when a construction moves from code to print, or from code to space? What gets lost? What stays the same?
+
+I myself come to this history from my perspective as a graphic designer, working with print, typography, space, and shapes every day. Having left Russia for Finland as a two-year old before the fall of the Soviet Union, the forms of Russian abstraction have followed me throughout my life like a shadow. Ode to Construction’s color palette is red, white, and black, and therefore it references the aesthetics of the movements with which I’m engaged. But the colors also reference the lexicon of typography, and the typographic standard of black on white with red is an accent colour. For designers like myself, this palette is often the starting point. So it became the starting point for me here too.
+
+— Polina Joffe, July 2020
 
 <div class="hr"></div>
 
