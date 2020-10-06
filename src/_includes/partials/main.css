@@ -375,7 +375,7 @@ input[type="range"]::-ms-thumb {
 }
 
 .canvas {
-  height: calc(100vh - 3.5rem);
+  height: calc(100vh - 16rem);
   width: 100%;
   display: block;
   object-fit: contain;
@@ -407,16 +407,13 @@ input[type="range"]::-ms-thumb {
 }
 
 .bottom {
+  padding-top: var(--space);
   padding-bottom: var(--space);
 }
 
 .bottom p {
   margin: 0;
   margin-bottom: 0.5em;
-}
-
-.canvas {
-  height: calc(100vh - 10rem);
 }
 
 .shop-grid {
@@ -507,10 +504,6 @@ img {
 }
 
 @media (min-width: 40em) {
-  .bottom {
-    padding-top: var(--space);
-  }
-
   .page {
     grid-template-columns: [main-start sidebar-start marginalia-start hr-start canvas-start] 2fr [ marginalia-end content-start ] 5fr [sidebar-end canvas-end hr-end main-end];
   }
