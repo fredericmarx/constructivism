@@ -25,7 +25,7 @@
     "not IE_Mob 11"
   ],
   "dependencies": {
-    "jspdf": "^2.0.0",
+    "jspdf": "^2.3.1",
     "minify-xml": "^2.1.0",
     "svg2pdf.js": "^2.0.0"
   }
